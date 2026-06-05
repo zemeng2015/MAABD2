@@ -24,7 +24,7 @@ If a task does not behave as expected, please keep the exported MFAAvalonia logs
 - 🪟 **Automatic window normalization**: Public tasks first check the BD2 PC client area and resize it to the `1280x720` script baseline when needed.
 - 🖥️ **PC window control**: Connects to the `BrownDust II` client window through the Win32 controller, then uses hidden helper scripts for real mouse clicks, drags, key presses, and window focusing.
 - 🎁 **Reward claiming**: Enters visible reward entry points such as mail from the home screen and attempts to claim available rewards. More sign-in, mission, and event templates will be added gradually.
-- 🧲 **Weekly Absorb / Rally**: Planned flow for entering story game cassettes, running Explore, Absorb, and Rally, then entering target maps. The default route is `7/8/9/13/16/17`.
+- 🧲 **Weekly Absorb / Rally**: Planned flow for entering story game cassettes, pressing `5/1/2/F` for Explore, Absorb, Rally, and map selection, then entering target maps. The default route is `7/8/9/13/16/17`. The first pass currently recognizes `Battle 1`.
 - ⚙️ **Auto powder farm**: Opens inventory and equipment crafting, locates the selected N-rarity item, opens enhancement settings, enables auto dismantle, sets crafting quantity, then loops crafting and dismantling for powder.
 - 🎚️ **Powder options**: Supports choosing `Mercenary Sword` or `Mercenary Bracelet`, and supports running `1-99` rounds or continuing until materials run out.
 - 🗼 **Auto tower**: Designed for fixed-formation tower runs. It detects auto battle state, victory, next-floor buttons, and confirmation prompts to build a continuous tower-climbing flow.

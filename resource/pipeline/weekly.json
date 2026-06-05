@@ -37,7 +37,7 @@
     ],
     "threshold": 0.72,
     "action": "DoNothing",
-    "next": "Weekly_OpenGameCassette"
+    "next": "Weekly_OpenGameCassetteFromHome"
   },
   "Weekly_Home_ActivityEntry720p": {
     "recognition": "TemplateMatch",
@@ -50,25 +50,25 @@
     ],
     "threshold": 0.72,
     "action": "DoNothing",
-    "next": "Weekly_OpenGameCassette"
+    "next": "Weekly_OpenGameCassetteFromHome"
   },
   "Weekly_Home_MailEntry": {
     "recognition": "TemplateMatch",
     "template": "reward/mail_entry.png",
     "threshold": 0.65,
     "action": "DoNothing",
-    "next": "Weekly_OpenGameCassette"
+    "next": "Weekly_OpenGameCassetteFromHome"
   },
-  "Weekly_OpenGameCassette": {
+  "Weekly_OpenGameCassetteFromHome": {
     "recognition": "TemplateMatch",
     "template": "weekly/game_cassette_entry.png",
     "roi": [
-      1040,
-      520,
-      240,
-      200
+      480,
+      600,
+      180,
+      120
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -87,7 +87,7 @@
       "-HoldMs",
       "220"
     ],
-    "post_delay": 1800,
+    "post_delay": 1200,
     "next": "Weekly_OpenStoryGameTab"
   },
   "Weekly_OpenStoryGameTab": {
@@ -99,7 +99,7 @@
       1280,
       220
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -118,56 +118,28 @@
       "-HoldMs",
       "220"
     ],
-    "post_delay": 1200,
+    "post_delay": 1000,
     "next": "Weekly_RouteStart"
   },
   "Weekly_RouteStart": {
     "next": "Weekly_RunCassette07"
   },
   "Weekly_RunCassette07": {
-    "next": "Weekly_FindCassette07"
+    "next": [
+      "Weekly_FindCassette07",
+      "Weekly_SwipeCassetteList07"
+    ]
   },
   "Weekly_FindCassette07": {
     "recognition": "TemplateMatch",
     "template": "weekly/cassette_07.png",
     "roi": [
-      80,
-      140,
-      1120,
-      500
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
-    "action": "Command",
-    "exec": "wscript.exe",
-    "args": [
-      "//B",
-      "//Nologo",
-      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
-      "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
-      "-HoldMs",
-      "220"
-    ],
-    "post_delay": 1800,
-    "next": "Weekly_ClickExplore07"
-  },
-  "Weekly_ClickExplore07": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_explore.png",
-    "roi": [
       0,
       0,
       1280,
       720
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -185,21 +157,38 @@
       "720",
       "-HoldMs",
       "220"
+    ],
+    "post_delay": 1500,
+    "next": "Weekly_PressExplore07"
+  },
+  "Weekly_SwipeCassetteList07": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "1020",
+      "-Y",
+      "640",
+      "-EndX",
+      "300",
+      "-EndY",
+      "640",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_ClickAbsorb07"
+    "next": "Weekly_RunCassette07"
   },
-  "Weekly_ClickAbsorb07": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_absorb.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressExplore07": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -207,30 +196,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "53",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_ClickRally07"
+    "post_delay": 800,
+    "next": "Weekly_PressAbsorb07"
   },
-  "Weekly_ClickRally07": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_rally.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressAbsorb07": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -238,36 +213,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "49",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_EnterMapSelect07"
+    "post_delay": 800,
+    "next": "Weekly_PressRally07"
   },
-  "Weekly_EnterMapSelect07": {
-    "next": [
-      "Weekly_ClickHandIcon07",
-      "Weekly_PressF07"
-    ]
-  },
-  "Weekly_ClickHandIcon07": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/hand_interact.png",
-    "roi": [
-      980,
-      520,
-      300,
-      200
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressRally07": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -275,20 +230,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "50",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 1200,
-    "next": "Weekly_SelectMap07"
+    "post_delay": 800,
+    "next": "Weekly_PressMapInteract07"
   },
-  "Weekly_PressF07": {
+  "Weekly_PressMapInteract07": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -303,24 +254,24 @@
       "160"
     ],
     "post_delay": 1200,
-    "next": "Weekly_SelectMap07"
+    "next": "Weekly_SelectBattle1_07"
   },
-  "Weekly_SelectMap07": {
+  "Weekly_SelectBattle1_07": {
     "next": [
-      "Weekly_ClickMapName07",
-      "Weekly_SwipeMapList07"
+      "Weekly_ClickBattle1_07",
+      "Weekly_SwipeMapListBattle1_07"
     ]
   },
-  "Weekly_ClickMapName07": {
+  "Weekly_ClickBattle1_07": {
     "recognition": "TemplateMatch",
-    "template": "weekly/map_name_07.png",
+    "template": "weekly/map_battle_1.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      360,
+      560,
+      560,
+      140
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -339,10 +290,10 @@
       "-HoldMs",
       "220"
     ],
-    "post_delay": 800,
-    "next": "Weekly_ClickMagicCircle07"
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle1_07"
   },
-  "Weekly_SwipeMapList07": {
+  "Weekly_SwipeMapListBattle1_07": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -367,18 +318,18 @@
       "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_SelectMap07"
+    "next": "Weekly_SelectBattle1_07"
   },
-  "Weekly_ClickMagicCircle07": {
+  "Weekly_ClickMagicCircleBattle1_07": {
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      420,
+      160,
+      520,
+      360
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -398,52 +349,55 @@
       "220"
     ],
     "post_delay": 1800,
+    "next": "Weekly_ReopenCassetteFor08"
+  },
+  "Weekly_ReopenCassetteFor08": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_bar_button.png",
+    "roi": [
+      480,
+      600,
+      180,
+      120
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
     "next": "Weekly_RunCassette08"
   },
   "Weekly_RunCassette08": {
-    "next": "Weekly_FindCassette08"
+    "next": [
+      "Weekly_FindCassette08",
+      "Weekly_SwipeCassetteList08"
+    ]
   },
   "Weekly_FindCassette08": {
     "recognition": "TemplateMatch",
     "template": "weekly/cassette_08.png",
     "roi": [
-      80,
-      140,
-      1120,
-      500
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
-    "action": "Command",
-    "exec": "wscript.exe",
-    "args": [
-      "//B",
-      "//Nologo",
-      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
-      "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
-      "-HoldMs",
-      "220"
-    ],
-    "post_delay": 1800,
-    "next": "Weekly_ClickExplore08"
-  },
-  "Weekly_ClickExplore08": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_explore.png",
-    "roi": [
       0,
       0,
       1280,
       720
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -461,21 +415,38 @@
       "720",
       "-HoldMs",
       "220"
+    ],
+    "post_delay": 1500,
+    "next": "Weekly_PressExplore08"
+  },
+  "Weekly_SwipeCassetteList08": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "1020",
+      "-Y",
+      "640",
+      "-EndX",
+      "300",
+      "-EndY",
+      "640",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_ClickAbsorb08"
+    "next": "Weekly_RunCassette08"
   },
-  "Weekly_ClickAbsorb08": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_absorb.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressExplore08": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -483,30 +454,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "53",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_ClickRally08"
+    "post_delay": 800,
+    "next": "Weekly_PressAbsorb08"
   },
-  "Weekly_ClickRally08": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_rally.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressAbsorb08": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -514,36 +471,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "49",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_EnterMapSelect08"
+    "post_delay": 800,
+    "next": "Weekly_PressRally08"
   },
-  "Weekly_EnterMapSelect08": {
-    "next": [
-      "Weekly_ClickHandIcon08",
-      "Weekly_PressF08"
-    ]
-  },
-  "Weekly_ClickHandIcon08": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/hand_interact.png",
-    "roi": [
-      980,
-      520,
-      300,
-      200
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressRally08": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -551,20 +488,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "50",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 1200,
-    "next": "Weekly_SelectMap08"
+    "post_delay": 800,
+    "next": "Weekly_PressMapInteract08"
   },
-  "Weekly_PressF08": {
+  "Weekly_PressMapInteract08": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -579,24 +512,24 @@
       "160"
     ],
     "post_delay": 1200,
-    "next": "Weekly_SelectMap08"
+    "next": "Weekly_SelectBattle1_08"
   },
-  "Weekly_SelectMap08": {
+  "Weekly_SelectBattle1_08": {
     "next": [
-      "Weekly_ClickMapName08",
-      "Weekly_SwipeMapList08"
+      "Weekly_ClickBattle1_08",
+      "Weekly_SwipeMapListBattle1_08"
     ]
   },
-  "Weekly_ClickMapName08": {
+  "Weekly_ClickBattle1_08": {
     "recognition": "TemplateMatch",
-    "template": "weekly/map_name_08.png",
+    "template": "weekly/map_battle_1.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      360,
+      560,
+      560,
+      140
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -615,10 +548,10 @@
       "-HoldMs",
       "220"
     ],
-    "post_delay": 800,
-    "next": "Weekly_ClickMagicCircle08"
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle1_08"
   },
-  "Weekly_SwipeMapList08": {
+  "Weekly_SwipeMapListBattle1_08": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -643,18 +576,18 @@
       "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_SelectMap08"
+    "next": "Weekly_SelectBattle1_08"
   },
-  "Weekly_ClickMagicCircle08": {
+  "Weekly_ClickMagicCircleBattle1_08": {
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      420,
+      160,
+      520,
+      360
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -674,52 +607,55 @@
       "220"
     ],
     "post_delay": 1800,
+    "next": "Weekly_ReopenCassetteFor09"
+  },
+  "Weekly_ReopenCassetteFor09": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_bar_button.png",
+    "roi": [
+      480,
+      600,
+      180,
+      120
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
     "next": "Weekly_RunCassette09"
   },
   "Weekly_RunCassette09": {
-    "next": "Weekly_FindCassette09"
+    "next": [
+      "Weekly_FindCassette09",
+      "Weekly_SwipeCassetteList09"
+    ]
   },
   "Weekly_FindCassette09": {
     "recognition": "TemplateMatch",
     "template": "weekly/cassette_09.png",
     "roi": [
-      80,
-      140,
-      1120,
-      500
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
-    "action": "Command",
-    "exec": "wscript.exe",
-    "args": [
-      "//B",
-      "//Nologo",
-      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
-      "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
-      "-HoldMs",
-      "220"
-    ],
-    "post_delay": 1800,
-    "next": "Weekly_ClickExplore09"
-  },
-  "Weekly_ClickExplore09": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_explore.png",
-    "roi": [
       0,
       0,
       1280,
       720
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -737,21 +673,38 @@
       "720",
       "-HoldMs",
       "220"
+    ],
+    "post_delay": 1500,
+    "next": "Weekly_PressExplore09"
+  },
+  "Weekly_SwipeCassetteList09": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "1020",
+      "-Y",
+      "640",
+      "-EndX",
+      "300",
+      "-EndY",
+      "640",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_ClickAbsorb09"
+    "next": "Weekly_RunCassette09"
   },
-  "Weekly_ClickAbsorb09": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_absorb.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressExplore09": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -759,30 +712,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "53",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_ClickRally09"
+    "post_delay": 800,
+    "next": "Weekly_PressAbsorb09"
   },
-  "Weekly_ClickRally09": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_rally.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressAbsorb09": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -790,36 +729,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "49",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_EnterMapSelect09"
+    "post_delay": 800,
+    "next": "Weekly_PressRally09"
   },
-  "Weekly_EnterMapSelect09": {
-    "next": [
-      "Weekly_ClickHandIcon09",
-      "Weekly_PressF09"
-    ]
-  },
-  "Weekly_ClickHandIcon09": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/hand_interact.png",
-    "roi": [
-      980,
-      520,
-      300,
-      200
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressRally09": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -827,20 +746,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "50",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 1200,
-    "next": "Weekly_SelectMap09"
+    "post_delay": 800,
+    "next": "Weekly_PressMapInteract09"
   },
-  "Weekly_PressF09": {
+  "Weekly_PressMapInteract09": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -855,24 +770,24 @@
       "160"
     ],
     "post_delay": 1200,
-    "next": "Weekly_SelectMap09"
+    "next": "Weekly_SelectBattle1_09"
   },
-  "Weekly_SelectMap09": {
+  "Weekly_SelectBattle1_09": {
     "next": [
-      "Weekly_ClickMapName09",
-      "Weekly_SwipeMapList09"
+      "Weekly_ClickBattle1_09",
+      "Weekly_SwipeMapListBattle1_09"
     ]
   },
-  "Weekly_ClickMapName09": {
+  "Weekly_ClickBattle1_09": {
     "recognition": "TemplateMatch",
-    "template": "weekly/map_name_09.png",
+    "template": "weekly/map_battle_1.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      360,
+      560,
+      560,
+      140
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -891,10 +806,10 @@
       "-HoldMs",
       "220"
     ],
-    "post_delay": 800,
-    "next": "Weekly_ClickMagicCircle09"
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle1_09"
   },
-  "Weekly_SwipeMapList09": {
+  "Weekly_SwipeMapListBattle1_09": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -919,18 +834,18 @@
       "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_SelectMap09"
+    "next": "Weekly_SelectBattle1_09"
   },
-  "Weekly_ClickMagicCircle09": {
+  "Weekly_ClickMagicCircleBattle1_09": {
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      420,
+      160,
+      520,
+      360
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -950,52 +865,55 @@
       "220"
     ],
     "post_delay": 1800,
+    "next": "Weekly_ReopenCassetteFor13"
+  },
+  "Weekly_ReopenCassetteFor13": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_bar_button.png",
+    "roi": [
+      480,
+      600,
+      180,
+      120
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
     "next": "Weekly_RunCassette13"
   },
   "Weekly_RunCassette13": {
-    "next": "Weekly_FindCassette13"
+    "next": [
+      "Weekly_FindCassette13",
+      "Weekly_SwipeCassetteList13"
+    ]
   },
   "Weekly_FindCassette13": {
     "recognition": "TemplateMatch",
     "template": "weekly/cassette_13.png",
     "roi": [
-      80,
-      140,
-      1120,
-      500
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
-    "action": "Command",
-    "exec": "wscript.exe",
-    "args": [
-      "//B",
-      "//Nologo",
-      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
-      "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
-      "-HoldMs",
-      "220"
-    ],
-    "post_delay": 1800,
-    "next": "Weekly_ClickExplore13"
-  },
-  "Weekly_ClickExplore13": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_explore.png",
-    "roi": [
       0,
       0,
       1280,
       720
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -1013,21 +931,38 @@
       "720",
       "-HoldMs",
       "220"
+    ],
+    "post_delay": 1500,
+    "next": "Weekly_PressExplore13"
+  },
+  "Weekly_SwipeCassetteList13": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "1020",
+      "-Y",
+      "640",
+      "-EndX",
+      "300",
+      "-EndY",
+      "640",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_ClickAbsorb13"
+    "next": "Weekly_RunCassette13"
   },
-  "Weekly_ClickAbsorb13": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_absorb.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressExplore13": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1035,30 +970,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "53",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_ClickRally13"
+    "post_delay": 800,
+    "next": "Weekly_PressAbsorb13"
   },
-  "Weekly_ClickRally13": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_rally.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressAbsorb13": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1066,36 +987,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "49",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_EnterMapSelect13"
+    "post_delay": 800,
+    "next": "Weekly_PressRally13"
   },
-  "Weekly_EnterMapSelect13": {
-    "next": [
-      "Weekly_ClickHandIcon13",
-      "Weekly_PressF13"
-    ]
-  },
-  "Weekly_ClickHandIcon13": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/hand_interact.png",
-    "roi": [
-      980,
-      520,
-      300,
-      200
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressRally13": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1103,20 +1004,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "50",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 1200,
-    "next": "Weekly_SelectMap13"
+    "post_delay": 800,
+    "next": "Weekly_PressMapInteract13"
   },
-  "Weekly_PressF13": {
+  "Weekly_PressMapInteract13": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1131,24 +1028,24 @@
       "160"
     ],
     "post_delay": 1200,
-    "next": "Weekly_SelectMap13"
+    "next": "Weekly_SelectBattle1_13"
   },
-  "Weekly_SelectMap13": {
+  "Weekly_SelectBattle1_13": {
     "next": [
-      "Weekly_ClickMapName13",
-      "Weekly_SwipeMapList13"
+      "Weekly_ClickBattle1_13",
+      "Weekly_SwipeMapListBattle1_13"
     ]
   },
-  "Weekly_ClickMapName13": {
+  "Weekly_ClickBattle1_13": {
     "recognition": "TemplateMatch",
-    "template": "weekly/map_name_13.png",
+    "template": "weekly/map_battle_1.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      360,
+      560,
+      560,
+      140
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -1167,10 +1064,10 @@
       "-HoldMs",
       "220"
     ],
-    "post_delay": 800,
-    "next": "Weekly_ClickMagicCircle13"
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle1_13"
   },
-  "Weekly_SwipeMapList13": {
+  "Weekly_SwipeMapListBattle1_13": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1195,18 +1092,18 @@
       "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_SelectMap13"
+    "next": "Weekly_SelectBattle1_13"
   },
-  "Weekly_ClickMagicCircle13": {
+  "Weekly_ClickMagicCircleBattle1_13": {
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      420,
+      160,
+      520,
+      360
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -1226,52 +1123,55 @@
       "220"
     ],
     "post_delay": 1800,
+    "next": "Weekly_ReopenCassetteFor16"
+  },
+  "Weekly_ReopenCassetteFor16": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_bar_button.png",
+    "roi": [
+      480,
+      600,
+      180,
+      120
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
     "next": "Weekly_RunCassette16"
   },
   "Weekly_RunCassette16": {
-    "next": "Weekly_FindCassette16"
+    "next": [
+      "Weekly_FindCassette16",
+      "Weekly_SwipeCassetteList16"
+    ]
   },
   "Weekly_FindCassette16": {
     "recognition": "TemplateMatch",
     "template": "weekly/cassette_16.png",
     "roi": [
-      80,
-      140,
-      1120,
-      500
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
-    "action": "Command",
-    "exec": "wscript.exe",
-    "args": [
-      "//B",
-      "//Nologo",
-      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
-      "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
-      "-HoldMs",
-      "220"
-    ],
-    "post_delay": 1800,
-    "next": "Weekly_ClickExplore16"
-  },
-  "Weekly_ClickExplore16": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_explore.png",
-    "roi": [
       0,
       0,
       1280,
       720
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -1289,21 +1189,38 @@
       "720",
       "-HoldMs",
       "220"
+    ],
+    "post_delay": 1500,
+    "next": "Weekly_PressExplore16"
+  },
+  "Weekly_SwipeCassetteList16": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "1020",
+      "-Y",
+      "640",
+      "-EndX",
+      "300",
+      "-EndY",
+      "640",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_ClickAbsorb16"
+    "next": "Weekly_RunCassette16"
   },
-  "Weekly_ClickAbsorb16": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_absorb.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressExplore16": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1311,30 +1228,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "53",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_ClickRally16"
+    "post_delay": 800,
+    "next": "Weekly_PressAbsorb16"
   },
-  "Weekly_ClickRally16": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_rally.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressAbsorb16": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1342,36 +1245,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "49",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_EnterMapSelect16"
+    "post_delay": 800,
+    "next": "Weekly_PressRally16"
   },
-  "Weekly_EnterMapSelect16": {
-    "next": [
-      "Weekly_ClickHandIcon16",
-      "Weekly_PressF16"
-    ]
-  },
-  "Weekly_ClickHandIcon16": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/hand_interact.png",
-    "roi": [
-      980,
-      520,
-      300,
-      200
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressRally16": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1379,20 +1262,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "50",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 1200,
-    "next": "Weekly_SelectMap16"
+    "post_delay": 800,
+    "next": "Weekly_PressMapInteract16"
   },
-  "Weekly_PressF16": {
+  "Weekly_PressMapInteract16": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1407,24 +1286,24 @@
       "160"
     ],
     "post_delay": 1200,
-    "next": "Weekly_SelectMap16"
+    "next": "Weekly_SelectBattle1_16"
   },
-  "Weekly_SelectMap16": {
+  "Weekly_SelectBattle1_16": {
     "next": [
-      "Weekly_ClickMapName16",
-      "Weekly_SwipeMapList16"
+      "Weekly_ClickBattle1_16",
+      "Weekly_SwipeMapListBattle1_16"
     ]
   },
-  "Weekly_ClickMapName16": {
+  "Weekly_ClickBattle1_16": {
     "recognition": "TemplateMatch",
-    "template": "weekly/map_name_16.png",
+    "template": "weekly/map_battle_1.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      360,
+      560,
+      560,
+      140
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -1443,10 +1322,10 @@
       "-HoldMs",
       "220"
     ],
-    "post_delay": 800,
-    "next": "Weekly_ClickMagicCircle16"
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle1_16"
   },
-  "Weekly_SwipeMapList16": {
+  "Weekly_SwipeMapListBattle1_16": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1471,18 +1350,18 @@
       "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_SelectMap16"
+    "next": "Weekly_SelectBattle1_16"
   },
-  "Weekly_ClickMagicCircle16": {
+  "Weekly_ClickMagicCircleBattle1_16": {
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      420,
+      160,
+      520,
+      360
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -1502,52 +1381,55 @@
       "220"
     ],
     "post_delay": 1800,
+    "next": "Weekly_ReopenCassetteFor17"
+  },
+  "Weekly_ReopenCassetteFor17": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_bar_button.png",
+    "roi": [
+      480,
+      600,
+      180,
+      120
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
     "next": "Weekly_RunCassette17"
   },
   "Weekly_RunCassette17": {
-    "next": "Weekly_FindCassette17"
+    "next": [
+      "Weekly_FindCassette17",
+      "Weekly_SwipeCassetteList17"
+    ]
   },
   "Weekly_FindCassette17": {
     "recognition": "TemplateMatch",
     "template": "weekly/cassette_17.png",
     "roi": [
-      80,
-      140,
-      1120,
-      500
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
-    "action": "Command",
-    "exec": "wscript.exe",
-    "args": [
-      "//B",
-      "//Nologo",
-      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
-      "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
-      "-HoldMs",
-      "220"
-    ],
-    "post_delay": 1800,
-    "next": "Weekly_ClickExplore17"
-  },
-  "Weekly_ClickExplore17": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_explore.png",
-    "roi": [
       0,
       0,
       1280,
       720
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -1565,21 +1447,38 @@
       "720",
       "-HoldMs",
       "220"
+    ],
+    "post_delay": 1500,
+    "next": "Weekly_PressExplore17"
+  },
+  "Weekly_SwipeCassetteList17": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "1020",
+      "-Y",
+      "640",
+      "-EndX",
+      "300",
+      "-EndY",
+      "640",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_ClickAbsorb17"
+    "next": "Weekly_RunCassette17"
   },
-  "Weekly_ClickAbsorb17": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_absorb.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressExplore17": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1587,30 +1486,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "53",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_ClickRally17"
+    "post_delay": 800,
+    "next": "Weekly_PressAbsorb17"
   },
-  "Weekly_ClickRally17": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/action_rally.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      720
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressAbsorb17": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1618,36 +1503,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "49",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 700,
-    "next": "Weekly_EnterMapSelect17"
+    "post_delay": 800,
+    "next": "Weekly_PressRally17"
   },
-  "Weekly_EnterMapSelect17": {
-    "next": [
-      "Weekly_ClickHandIcon17",
-      "Weekly_PressF17"
-    ]
-  },
-  "Weekly_ClickHandIcon17": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/hand_interact.png",
-    "roi": [
-      980,
-      520,
-      300,
-      200
-    ],
-    "threshold": 0.55,
-    "order_by": "Score",
+  "Weekly_PressRally17": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1655,20 +1520,16 @@
       "//Nologo",
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
+      "key",
+      "-KeyCode",
+      "50",
       "-HoldMs",
-      "220"
+      "160"
     ],
-    "post_delay": 1200,
-    "next": "Weekly_SelectMap17"
+    "post_delay": 800,
+    "next": "Weekly_PressMapInteract17"
   },
-  "Weekly_PressF17": {
+  "Weekly_PressMapInteract17": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1683,24 +1544,24 @@
       "160"
     ],
     "post_delay": 1200,
-    "next": "Weekly_SelectMap17"
+    "next": "Weekly_SelectBattle1_17"
   },
-  "Weekly_SelectMap17": {
+  "Weekly_SelectBattle1_17": {
     "next": [
-      "Weekly_ClickMapName17",
-      "Weekly_SwipeMapList17"
+      "Weekly_ClickBattle1_17",
+      "Weekly_SwipeMapListBattle1_17"
     ]
   },
-  "Weekly_ClickMapName17": {
+  "Weekly_ClickBattle1_17": {
     "recognition": "TemplateMatch",
-    "template": "weekly/map_name_17.png",
+    "template": "weekly/map_battle_1.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      360,
+      560,
+      560,
+      140
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -1719,10 +1580,10 @@
       "-HoldMs",
       "220"
     ],
-    "post_delay": 800,
-    "next": "Weekly_ClickMagicCircle17"
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle1_17"
   },
-  "Weekly_SwipeMapList17": {
+  "Weekly_SwipeMapListBattle1_17": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1747,18 +1608,18 @@
       "650"
     ],
     "post_delay": 700,
-    "next": "Weekly_SelectMap17"
+    "next": "Weekly_SelectBattle1_17"
   },
-  "Weekly_ClickMagicCircle17": {
+  "Weekly_ClickMagicCircleBattle1_17": {
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      0,
-      0,
-      1280,
-      720
+      420,
+      160,
+      520,
+      360
     ],
-    "threshold": 0.55,
+    "threshold": 0.5,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",

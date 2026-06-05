@@ -36,12 +36,8 @@ Capture the following templates with a `1280x720` client area:
 - Absorb icon: `resource/image/weekly/action_absorb.png`
 - Rally icon: `resource/image/weekly/action_rally.png`
 - F/hand interaction icon: `resource/image/weekly/hand_interact.png`
-- Map name: `resource/image/weekly/map_name_07.png`
-- Map name: `resource/image/weekly/map_name_08.png`
-- Map name: `resource/image/weekly/map_name_09.png`
-- Map name: `resource/image/weekly/map_name_13.png`
-- Map name: `resource/image/weekly/map_name_16.png`
-- Map name: `resource/image/weekly/map_name_17.png`
+- Battle 1 map name: `resource/image/weekly/map_battle_1.png`
+- Battle 2 map name: `resource/image/weekly/map_battle_2.png`
 - Magic-circle map entry icon: `resource/image/weekly/map_magic_circle.png`
 
 ## Template Naming

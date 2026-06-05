@@ -155,7 +155,7 @@
             "Weekly_RouteStart": {
               "next": "Weekly_RunCassette07"
             },
-            "Weekly_ClickMagicCircle07": {
+            "Weekly_ClickMagicCircleBattle1_07": {
               "next": "Weekly_Stop"
             }
           }
@@ -167,7 +167,7 @@
             "Weekly_RouteStart": {
               "next": "Weekly_RunCassette08"
             },
-            "Weekly_ClickMagicCircle08": {
+            "Weekly_ClickMagicCircleBattle1_08": {
               "next": "Weekly_Stop"
             }
           }
@@ -179,7 +179,7 @@
             "Weekly_RouteStart": {
               "next": "Weekly_RunCassette09"
             },
-            "Weekly_ClickMagicCircle09": {
+            "Weekly_ClickMagicCircleBattle1_09": {
               "next": "Weekly_Stop"
             }
           }
@@ -191,7 +191,7 @@
             "Weekly_RouteStart": {
               "next": "Weekly_RunCassette13"
             },
-            "Weekly_ClickMagicCircle13": {
+            "Weekly_ClickMagicCircleBattle1_13": {
               "next": "Weekly_Stop"
             }
           }
@@ -203,7 +203,7 @@
             "Weekly_RouteStart": {
               "next": "Weekly_RunCassette16"
             },
-            "Weekly_ClickMagicCircle16": {
+            "Weekly_ClickMagicCircleBattle1_16": {
               "next": "Weekly_Stop"
             }
           }
@@ -215,7 +215,7 @@
             "Weekly_RouteStart": {
               "next": "Weekly_RunCassette17"
             },
-            "Weekly_ClickMagicCircle17": {
+            "Weekly_ClickMagicCircleBattle1_17": {
               "next": "Weekly_Stop"
             }
           }

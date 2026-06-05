@@ -36,12 +36,8 @@
 - 吸收图标：`resource/image/weekly/action_absorb.png`
 - 召集图标：`resource/image/weekly/action_rally.png`
 - F/手状交互图标：`resource/image/weekly/hand_interact.png`
-- 地图名称：`resource/image/weekly/map_name_07.png`
-- 地图名称：`resource/image/weekly/map_name_08.png`
-- 地图名称：`resource/image/weekly/map_name_09.png`
-- 地图名称：`resource/image/weekly/map_name_13.png`
-- 地图名称：`resource/image/weekly/map_name_16.png`
-- 地图名称：`resource/image/weekly/map_name_17.png`
+- 战斗 1 地图名称：`resource/image/weekly/map_battle_1.png`
+- 战斗 2 地图名称：`resource/image/weekly/map_battle_2.png`
 - 地图入口魔法阵图标：`resource/image/weekly/map_magic_circle.png`
 
 ## 模板命名
