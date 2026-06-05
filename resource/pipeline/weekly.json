@@ -60,16 +60,6 @@
     "next": "Weekly_OpenGameCassetteFromHome"
   },
   "Weekly_OpenGameCassetteFromHome": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/game_cassette_entry.png",
-    "roi": [
-      480,
-      600,
-      180,
-      120
-    ],
-    "threshold": 0.5,
-    "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -78,8 +68,10 @@
       "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
       "-Mode",
       "click",
-      "-Box",
-      "{BOX}",
+      "-X",
+      "525",
+      "-Y",
+      "656",
       "-BaseWidth",
       "1280",
       "-BaseHeight",
