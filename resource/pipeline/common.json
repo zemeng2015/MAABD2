@@ -1,0 +1,331 @@
+{
+  "EnsureHome": {
+    "next": [
+      "ResolveHome"
+    ]
+  },
+  "WaitForHome": {
+    "next": [
+      "ResolveHome"
+    ]
+  },
+  "ResolveHome": {
+    "next": [
+      "Flag_Home_LeftHouse720p",
+      "Flag_Home_TaskEntry720p",
+      "Flag_Home_ActivityEntry720p",
+      "Flag_Home_RightTop",
+      "Flag_Home_MailEntry",
+      "Flag_Home_TaskEntry",
+      "Click_TouchToStart",
+      "RecoverHomeRound1"
+    ]
+  },
+  "CheckHomeAfterStart": {
+    "timeout": 10000,
+    "next": [
+      "Flag_Home_LeftHouse720p",
+      "Flag_Home_TaskEntry720p",
+      "Flag_Home_ActivityEntry720p",
+      "Flag_Home_RightTop",
+      "Flag_Home_MailEntry",
+      "Flag_Home_TaskEntry",
+      "RecoverHomeRound1"
+    ]
+  },
+  "CheckHomeRound1": {
+    "timeout": 8000,
+    "next": [
+      "Flag_Home_LeftHouse720p",
+      "Flag_Home_TaskEntry720p",
+      "Flag_Home_ActivityEntry720p",
+      "Flag_Home_RightTop",
+      "Flag_Home_MailEntry",
+      "Flag_Home_TaskEntry",
+      "ReturnHomeFromHud720pRound1",
+      "ReturnHomeFromHudRound1",
+      "TapBackRound1",
+      "RecoverHomeRound2"
+    ]
+  },
+  "CheckHomeAfterHud1": {
+    "timeout": 8000,
+    "next": [
+      "Flag_Home_LeftHouse720p",
+      "Flag_Home_TaskEntry720p",
+      "Flag_Home_ActivityEntry720p",
+      "Flag_Home_RightTop",
+      "Flag_Home_MailEntry",
+      "Flag_Home_TaskEntry",
+      "RecoverHomeRound2"
+    ]
+  },
+  "CheckHomeAfterBack1": {
+    "timeout": 8000,
+    "next": [
+      "Flag_Home_LeftHouse720p",
+      "Flag_Home_TaskEntry720p",
+      "Flag_Home_ActivityEntry720p",
+      "Flag_Home_RightTop",
+      "Flag_Home_MailEntry",
+      "Flag_Home_TaskEntry",
+      "RecoverHomeRound2"
+    ]
+  },
+  "CheckHomeRound2": {
+    "timeout": 8000,
+    "next": [
+      "Flag_Home_LeftHouse720p",
+      "Flag_Home_TaskEntry720p",
+      "Flag_Home_ActivityEntry720p",
+      "Flag_Home_RightTop",
+      "Flag_Home_MailEntry",
+      "Flag_Home_TaskEntry",
+      "ReturnHomeFromHud720pRound2",
+      "ReturnHomeFromHudRound2",
+      "TapBackRound2",
+      "Stop_UnrecognizedState"
+    ]
+  },
+  "CheckHomeAfterHud2": {
+    "timeout": 8000,
+    "next": [
+      "Flag_Home_LeftHouse720p",
+      "Flag_Home_TaskEntry720p",
+      "Flag_Home_ActivityEntry720p",
+      "Flag_Home_RightTop",
+      "Flag_Home_MailEntry",
+      "Flag_Home_TaskEntry",
+      "Stop_UnrecognizedState"
+    ]
+  },
+  "CheckHomeAfterBack2": {
+    "timeout": 8000,
+    "next": [
+      "Flag_Home_LeftHouse720p",
+      "Flag_Home_TaskEntry720p",
+      "Flag_Home_ActivityEntry720p",
+      "Flag_Home_RightTop",
+      "Flag_Home_MailEntry",
+      "Flag_Home_TaskEntry",
+      "Stop_UnrecognizedState"
+    ]
+  },
+  "Flag_Home_RightTop": {
+    "recognition": "TemplateMatch",
+    "template": "home/home_marker.png"
+  },
+  "Flag_Home_LeftHouse720p": {
+    "recognition": "TemplateMatch",
+    "template": "home/home_house_720p.png",
+    "roi": [
+      60,
+      55,
+      120,
+      120
+    ],
+    "threshold": 0.72
+  },
+  "Flag_Home_TaskEntry720p": {
+    "recognition": "TemplateMatch",
+    "template": "home/task_entry_720p.png",
+    "roi": [
+      390,
+      590,
+      130,
+      120
+    ],
+    "threshold": 0.72
+  },
+  "Flag_Home_ActivityEntry720p": {
+    "recognition": "TemplateMatch",
+    "template": "home/activity_entry_720p.png",
+    "roi": [
+      540,
+      590,
+      120,
+      120
+    ],
+    "threshold": 0.72
+  },
+  "Flag_Home_MailEntry": {
+    "recognition": "TemplateMatch",
+    "template": "reward/mail_entry.png"
+  },
+  "Flag_Home_TaskEntry": {
+    "recognition": "TemplateMatch",
+    "template": "reward/task_entry.png"
+  },
+  "Click_TouchToStart": {
+    "recognition": "TemplateMatch",
+    "template": "startup/touch_to_start.png",
+    "roi": [
+      700,
+      380,
+      460,
+      170
+    ],
+    "threshold": 0.25,
+    "action": "Click",
+    "target": [
+      935,
+      486
+    ],
+    "post_delay": 3000,
+    "next": "CheckHomeAfterStart"
+  },
+  "RecoverHomeRound1": {
+    "next": "PressHomeKeyRound1"
+  },
+  "PressHomeKeyRound1": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "72"
+    ],
+    "post_delay": 2500,
+    "next": "CheckHomeRound1"
+  },
+  "ReturnHomeFromHud720pRound1": {
+    "recognition": "TemplateMatch",
+    "template": "hud/home_button_720p.png",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "1222",
+      "-Y",
+      "44",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "719",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 2500,
+    "next": "CheckHomeAfterHud1"
+  },
+  "ReturnHomeFromHudRound1": {
+    "recognition": "TemplateMatch",
+    "template": "hud/home_button.png",
+    "action": "Click",
+    "post_delay": 2500,
+    "next": "CheckHomeAfterHud1"
+  },
+  "TapBackRound1": {
+    "action": "ClickKey",
+    "key": 27,
+    "post_delay": 1500,
+    "next": "CheckHomeAfterBack1"
+  },
+  "RecoverHomeRound2": {
+    "next": "PressHomeKeyRound2"
+  },
+  "PressHomeKeyRound2": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "72"
+    ],
+    "post_delay": 2500,
+    "next": "CheckHomeRound2"
+  },
+  "ReturnHomeFromHud720pRound2": {
+    "recognition": "TemplateMatch",
+    "template": "hud/home_button_720p.png",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "1222",
+      "-Y",
+      "44",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "719",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 2500,
+    "next": "CheckHomeAfterHud2"
+  },
+  "ReturnHomeFromHudRound2": {
+    "recognition": "TemplateMatch",
+    "template": "hud/home_button.png",
+    "action": "Click",
+    "post_delay": 2500,
+    "next": "CheckHomeAfterHud2"
+  },
+  "TapBackRound2": {
+    "action": "ClickKey",
+    "key": 27,
+    "post_delay": 1500,
+    "next": "CheckHomeAfterBack2"
+  },
+  "CloseKnownPopup": {
+    "next": [
+      "Click_ConfirmButton",
+      "Click_SkipButton"
+    ]
+  },
+  "Click_ConfirmButton": {
+    "recognition": "OCR",
+    "expected": [
+      "OK"
+    ],
+    "action": "Click"
+  },
+  "Click_SkipButton": {
+    "recognition": "OCR",
+    "expected": [
+      "Skip"
+    ],
+    "action": "Click"
+  },
+  "Click_BlankArea": {
+    "action": "Click",
+    "target": [
+      640,
+      640,
+      1,
+      1
+    ],
+    "post_delay": 800
+  },
+  "TapBack": {
+    "action": "ClickKey",
+    "key": 27,
+    "post_delay": 1000
+  },
+  "Stop_UnrecognizedState": {
+    "recognition": "OCR",
+    "expected": [
+      "__BD2_UNRECOGNIZED_STATE__"
+    ],
+    "timeout": 1000
+  }
+}

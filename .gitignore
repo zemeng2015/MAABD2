@@ -1,0 +1,17 @@
+# Runtime logs and temporary state
+*.log
+resource/tools/*_state.json
+debug/
+logs/
+
+# Local MFA/MAA runtime bundles
+MFAAvalonia*/
+MAA-*/
+*.zip
+*.7z
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

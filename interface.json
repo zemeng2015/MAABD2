@@ -1,0 +1,1894 @@
+{
+  "$schema": "../MaaFramework/tools/interface.schema.json",
+  "interface_version": 2,
+  "languages": {
+    "zh_cn": "interface_zh.json",
+    "en_us": "interface_en.json"
+  },
+  "name": "MaaBD2",
+  "label": "$project_name",
+  "title": "$project_title",
+  "version": "0.1.0",
+  "description": "$project_description",
+  "welcome": "$welcome",
+  "license": "MIT",
+  "controller": [
+    {
+      "name": "Windows",
+      "label": "$controller_windows",
+      "description": "$controller_windows_description",
+      "type": "Win32",
+      "display_long_side": 1280,
+      "win32": {
+        "class_regex": "^UnityWndClass$",
+        "window_regex": "^BrownDust II$",
+        "screencap": "Foreground",
+        "mouse": "PostMessageWithCursorPos",
+        "keyboard": "PostMessageWithCursorPos"
+      }
+    }
+  ],
+  "resource": [
+    {
+      "name": "CN",
+      "label": "$resource_cn",
+      "description": "$resource_cn_description",
+      "path": [
+        "resource"
+      ],
+      "controller": [
+        "Windows"
+      ]
+    }
+  ],
+  "task": [
+    {
+      "name": "连接并回到主界面",
+      "label": "$task_startup",
+      "entry": "Startup",
+      "default_check": true,
+      "description": "$task_startup_description"
+    },
+    {
+      "name": "领取奖励",
+      "label": "$task_rewards",
+      "entry": "ClaimRewards",
+      "default_check": true,
+      "description": "$task_rewards_description"
+    },
+    {
+      "name": "每日任务",
+      "label": "$task_daily",
+      "entry": "DailyRoutine",
+      "default_check": false,
+      "description": "$task_daily_description"
+    },
+    {
+      "name": "自动刷粉",
+      "label": "$task_powder",
+      "entry": "PowderFarm",
+      "default_check": false,
+      "description": "$task_powder_description",
+      "option": [
+        "powder_equipment",
+        "powder_count"
+      ]
+    },
+    {
+      "name": "自动爬塔",
+      "label": "$task_tower",
+      "entry": "TowerClimb",
+      "default_check": false,
+      "description": "$task_tower_description"
+    },
+    {
+      "name": "固定副本",
+      "label": "$task_combat",
+      "entry": "FixedStageFarming",
+      "default_check": false,
+      "description": "$task_combat_description",
+      "option": [
+        "战斗次数"
+      ]
+    }
+  ],
+  "option": {
+    "战斗次数": {
+      "type": "select",
+      "label": "$option_combat_count",
+      "description": "$option_combat_count_description",
+      "default_case": "1",
+      "cases": [
+        {
+          "name": "1",
+          "label": "$combat_count_1",
+          "pipeline_override": {
+            "SetCombatCount": {
+              "expected": "1"
+            }
+          }
+        },
+        {
+          "name": "3",
+          "label": "$combat_count_3",
+          "pipeline_override": {
+            "SetCombatCount": {
+              "expected": "3"
+            }
+          }
+        },
+        {
+          "name": "AllEnergy",
+          "label": "$combat_count_all_energy",
+          "pipeline_override": {
+            "FarmUntilEnergyEmpty": {
+              "enabled": true
+            }
+          }
+        }
+      ]
+    },
+    "powder_equipment": {
+      "type": "select",
+      "label": "$option_powder_equipment",
+      "description": "$option_powder_equipment_description",
+      "default_case": "sword",
+      "cases": [
+        {
+          "name": "sword",
+          "label": "$powder_equipment_sword"
+        },
+        {
+          "name": "ring",
+          "label": "$powder_equipment_ring",
+          "pipeline_override": {
+            "Powder_ScrollToMercenarySword": {
+              "next": "Powder_SelectMercenaryRing"
+            }
+          }
+        }
+      ]
+    },
+    "powder_count": {
+      "type": "select",
+      "label": "$option_powder_count",
+      "description": "$option_powder_count_description",
+      "default_case": "until_empty",
+      "cases": [
+        {
+          "name": "until_empty",
+          "label": "$powder_count_until_empty",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "0"
+              ]
+            }
+          }
+        },
+        {
+          "name": "1",
+          "label": "1",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2",
+          "label": "2",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "2"
+              ]
+            }
+          }
+        },
+        {
+          "name": "3",
+          "label": "3",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "3"
+              ]
+            }
+          }
+        },
+        {
+          "name": "4",
+          "label": "4",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "4"
+              ]
+            }
+          }
+        },
+        {
+          "name": "5",
+          "label": "5",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "5"
+              ]
+            }
+          }
+        },
+        {
+          "name": "6",
+          "label": "6",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "6"
+              ]
+            }
+          }
+        },
+        {
+          "name": "7",
+          "label": "7",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "7"
+              ]
+            }
+          }
+        },
+        {
+          "name": "8",
+          "label": "8",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "8"
+              ]
+            }
+          }
+        },
+        {
+          "name": "9",
+          "label": "9",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "9"
+              ]
+            }
+          }
+        },
+        {
+          "name": "10",
+          "label": "10",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "10"
+              ]
+            }
+          }
+        },
+        {
+          "name": "11",
+          "label": "11",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "11"
+              ]
+            }
+          }
+        },
+        {
+          "name": "12",
+          "label": "12",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "12"
+              ]
+            }
+          }
+        },
+        {
+          "name": "13",
+          "label": "13",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "13"
+              ]
+            }
+          }
+        },
+        {
+          "name": "14",
+          "label": "14",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "14"
+              ]
+            }
+          }
+        },
+        {
+          "name": "15",
+          "label": "15",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "15"
+              ]
+            }
+          }
+        },
+        {
+          "name": "16",
+          "label": "16",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "16"
+              ]
+            }
+          }
+        },
+        {
+          "name": "17",
+          "label": "17",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "17"
+              ]
+            }
+          }
+        },
+        {
+          "name": "18",
+          "label": "18",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "18"
+              ]
+            }
+          }
+        },
+        {
+          "name": "19",
+          "label": "19",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "19"
+              ]
+            }
+          }
+        },
+        {
+          "name": "20",
+          "label": "20",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "20"
+              ]
+            }
+          }
+        },
+        {
+          "name": "21",
+          "label": "21",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "21"
+              ]
+            }
+          }
+        },
+        {
+          "name": "22",
+          "label": "22",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "22"
+              ]
+            }
+          }
+        },
+        {
+          "name": "23",
+          "label": "23",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "23"
+              ]
+            }
+          }
+        },
+        {
+          "name": "24",
+          "label": "24",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "24"
+              ]
+            }
+          }
+        },
+        {
+          "name": "25",
+          "label": "25",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "25"
+              ]
+            }
+          }
+        },
+        {
+          "name": "26",
+          "label": "26",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "26"
+              ]
+            }
+          }
+        },
+        {
+          "name": "27",
+          "label": "27",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "27"
+              ]
+            }
+          }
+        },
+        {
+          "name": "28",
+          "label": "28",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "28"
+              ]
+            }
+          }
+        },
+        {
+          "name": "29",
+          "label": "29",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "29"
+              ]
+            }
+          }
+        },
+        {
+          "name": "30",
+          "label": "30",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "30"
+              ]
+            }
+          }
+        },
+        {
+          "name": "31",
+          "label": "31",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "31"
+              ]
+            }
+          }
+        },
+        {
+          "name": "32",
+          "label": "32",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "32"
+              ]
+            }
+          }
+        },
+        {
+          "name": "33",
+          "label": "33",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "33"
+              ]
+            }
+          }
+        },
+        {
+          "name": "34",
+          "label": "34",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "34"
+              ]
+            }
+          }
+        },
+        {
+          "name": "35",
+          "label": "35",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "35"
+              ]
+            }
+          }
+        },
+        {
+          "name": "36",
+          "label": "36",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "36"
+              ]
+            }
+          }
+        },
+        {
+          "name": "37",
+          "label": "37",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "37"
+              ]
+            }
+          }
+        },
+        {
+          "name": "38",
+          "label": "38",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "38"
+              ]
+            }
+          }
+        },
+        {
+          "name": "39",
+          "label": "39",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "39"
+              ]
+            }
+          }
+        },
+        {
+          "name": "40",
+          "label": "40",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "40"
+              ]
+            }
+          }
+        },
+        {
+          "name": "41",
+          "label": "41",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "41"
+              ]
+            }
+          }
+        },
+        {
+          "name": "42",
+          "label": "42",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "42"
+              ]
+            }
+          }
+        },
+        {
+          "name": "43",
+          "label": "43",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "43"
+              ]
+            }
+          }
+        },
+        {
+          "name": "44",
+          "label": "44",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "44"
+              ]
+            }
+          }
+        },
+        {
+          "name": "45",
+          "label": "45",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "45"
+              ]
+            }
+          }
+        },
+        {
+          "name": "46",
+          "label": "46",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "46"
+              ]
+            }
+          }
+        },
+        {
+          "name": "47",
+          "label": "47",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "47"
+              ]
+            }
+          }
+        },
+        {
+          "name": "48",
+          "label": "48",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "48"
+              ]
+            }
+          }
+        },
+        {
+          "name": "49",
+          "label": "49",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "49"
+              ]
+            }
+          }
+        },
+        {
+          "name": "50",
+          "label": "50",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "50"
+              ]
+            }
+          }
+        },
+        {
+          "name": "51",
+          "label": "51",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "51"
+              ]
+            }
+          }
+        },
+        {
+          "name": "52",
+          "label": "52",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "52"
+              ]
+            }
+          }
+        },
+        {
+          "name": "53",
+          "label": "53",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "53"
+              ]
+            }
+          }
+        },
+        {
+          "name": "54",
+          "label": "54",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "54"
+              ]
+            }
+          }
+        },
+        {
+          "name": "55",
+          "label": "55",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "55"
+              ]
+            }
+          }
+        },
+        {
+          "name": "56",
+          "label": "56",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "56"
+              ]
+            }
+          }
+        },
+        {
+          "name": "57",
+          "label": "57",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "57"
+              ]
+            }
+          }
+        },
+        {
+          "name": "58",
+          "label": "58",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "58"
+              ]
+            }
+          }
+        },
+        {
+          "name": "59",
+          "label": "59",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "59"
+              ]
+            }
+          }
+        },
+        {
+          "name": "60",
+          "label": "60",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "60"
+              ]
+            }
+          }
+        },
+        {
+          "name": "61",
+          "label": "61",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "61"
+              ]
+            }
+          }
+        },
+        {
+          "name": "62",
+          "label": "62",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "62"
+              ]
+            }
+          }
+        },
+        {
+          "name": "63",
+          "label": "63",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "63"
+              ]
+            }
+          }
+        },
+        {
+          "name": "64",
+          "label": "64",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "64"
+              ]
+            }
+          }
+        },
+        {
+          "name": "65",
+          "label": "65",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "65"
+              ]
+            }
+          }
+        },
+        {
+          "name": "66",
+          "label": "66",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "66"
+              ]
+            }
+          }
+        },
+        {
+          "name": "67",
+          "label": "67",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "67"
+              ]
+            }
+          }
+        },
+        {
+          "name": "68",
+          "label": "68",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "68"
+              ]
+            }
+          }
+        },
+        {
+          "name": "69",
+          "label": "69",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "69"
+              ]
+            }
+          }
+        },
+        {
+          "name": "70",
+          "label": "70",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "70"
+              ]
+            }
+          }
+        },
+        {
+          "name": "71",
+          "label": "71",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "71"
+              ]
+            }
+          }
+        },
+        {
+          "name": "72",
+          "label": "72",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "72"
+              ]
+            }
+          }
+        },
+        {
+          "name": "73",
+          "label": "73",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "73"
+              ]
+            }
+          }
+        },
+        {
+          "name": "74",
+          "label": "74",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "74"
+              ]
+            }
+          }
+        },
+        {
+          "name": "75",
+          "label": "75",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "75"
+              ]
+            }
+          }
+        },
+        {
+          "name": "76",
+          "label": "76",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "76"
+              ]
+            }
+          }
+        },
+        {
+          "name": "77",
+          "label": "77",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "77"
+              ]
+            }
+          }
+        },
+        {
+          "name": "78",
+          "label": "78",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "78"
+              ]
+            }
+          }
+        },
+        {
+          "name": "79",
+          "label": "79",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "79"
+              ]
+            }
+          }
+        },
+        {
+          "name": "80",
+          "label": "80",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "80"
+              ]
+            }
+          }
+        },
+        {
+          "name": "81",
+          "label": "81",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "81"
+              ]
+            }
+          }
+        },
+        {
+          "name": "82",
+          "label": "82",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "82"
+              ]
+            }
+          }
+        },
+        {
+          "name": "83",
+          "label": "83",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "83"
+              ]
+            }
+          }
+        },
+        {
+          "name": "84",
+          "label": "84",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "84"
+              ]
+            }
+          }
+        },
+        {
+          "name": "85",
+          "label": "85",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "85"
+              ]
+            }
+          }
+        },
+        {
+          "name": "86",
+          "label": "86",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "86"
+              ]
+            }
+          }
+        },
+        {
+          "name": "87",
+          "label": "87",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "87"
+              ]
+            }
+          }
+        },
+        {
+          "name": "88",
+          "label": "88",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "88"
+              ]
+            }
+          }
+        },
+        {
+          "name": "89",
+          "label": "89",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "89"
+              ]
+            }
+          }
+        },
+        {
+          "name": "90",
+          "label": "90",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "90"
+              ]
+            }
+          }
+        },
+        {
+          "name": "91",
+          "label": "91",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "91"
+              ]
+            }
+          }
+        },
+        {
+          "name": "92",
+          "label": "92",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "92"
+              ]
+            }
+          }
+        },
+        {
+          "name": "93",
+          "label": "93",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "93"
+              ]
+            }
+          }
+        },
+        {
+          "name": "94",
+          "label": "94",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "94"
+              ]
+            }
+          }
+        },
+        {
+          "name": "95",
+          "label": "95",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "95"
+              ]
+            }
+          }
+        },
+        {
+          "name": "96",
+          "label": "96",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "96"
+              ]
+            }
+          }
+        },
+        {
+          "name": "97",
+          "label": "97",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "97"
+              ]
+            }
+          }
+        },
+        {
+          "name": "98",
+          "label": "98",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "98"
+              ]
+            }
+          }
+        },
+        {
+          "name": "99",
+          "label": "99",
+          "pipeline_override": {
+            "Powder_ResetCounter": {
+              "args": [
+                "//B",
+                "//Nologo",
+                "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+                "-Mode",
+                "reset",
+                "-Max",
+                "99"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "preset": [
+    {
+      "name": "首轮MVP",
+      "label": "$preset_mvp",
+      "description": "$preset_mvp_description",
+      "task": [
+        {
+          "name": "连接并回到主界面",
+          "enabled": true
+        },
+        {
+          "name": "领取奖励",
+          "enabled": true
+        },
+        {
+          "name": "每日任务",
+          "enabled": false
+        },
+        {
+          "name": "自动刷粉",
+          "enabled": false
+        },
+        {
+          "name": "自动爬塔",
+          "enabled": false
+        },
+        {
+          "name": "固定副本",
+          "enabled": false
+        }
+      ]
+    }
+  ]
+}

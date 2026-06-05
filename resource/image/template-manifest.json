@@ -1,0 +1,91 @@
+{
+  "startup/touch_to_start.png": {
+    "priority": 1,
+    "source_screen": "startup",
+    "crop": "TOUCH TO START text only",
+    "used_by": [
+      "startup/login detection"
+    ]
+  },
+  "home/home_marker.png": {
+    "priority": 1,
+    "source_screen": "home",
+    "crop": "stable home icon group or stable function icon cluster",
+    "used_by": [
+      "Flag_Home"
+    ]
+  },
+  "common/close_button.png": {
+    "priority": 1,
+    "source_screen": "popup",
+    "crop": "close button only",
+    "used_by": [
+      "Click_CloseButton"
+    ]
+  },
+  "reward/mail_entry.png": {
+    "priority": 1,
+    "source_screen": "home",
+    "crop": "mail icon only, excluding notification badge if possible",
+    "used_by": [
+      "OpenMail"
+    ]
+  },
+  "reward/task_entry.png": {
+    "priority": 1,
+    "source_screen": "home",
+    "crop": "bottom task icon and stable label if needed",
+    "used_by": [
+      "OpenDailyMission"
+    ]
+  },
+  "hud/home_button.png": {
+    "priority": 2,
+    "source_screen": "exploration_hud",
+    "crop": "top-right home icon only",
+    "used_by": [
+      "future return-home recovery"
+    ]
+  },
+  "hud/dpad.png": {
+    "priority": 2,
+    "source_screen": "exploration_hud",
+    "crop": "bottom-left d-pad or center region",
+    "used_by": [
+      "future HUD detection"
+    ]
+  },
+  "hud/action_cluster.png": {
+    "priority": 3,
+    "source_screen": "exploration_hud",
+    "crop": "bottom-right action button cluster",
+    "used_by": [
+      "future combat/exploration detection"
+    ]
+  },
+  "reward/activity_entry.png": {
+    "priority": 3,
+    "source_screen": "home",
+    "crop": "bottom activity icon",
+    "used_by": [
+      "future activity reward flow"
+    ]
+  },
+  "shop/shop_entry.png": {
+    "priority": 3,
+    "source_screen": "home",
+    "crop": "bottom shop icon",
+    "used_by": [
+      "future shop flow"
+    ]
+  },
+  "combat/quick_hunt_entry.png": {
+    "priority": 3,
+    "source_screen": "home",
+    "crop": "right-side quick hunt icon",
+    "used_by": [
+      "future fixed-stage farming"
+    ]
+  }
+}
+

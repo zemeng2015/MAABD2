@@ -1,0 +1,614 @@
+{
+  "PowderFarm": {
+    "next": "Powder_ResetCounter"
+  },
+  "Powder_FocusGame": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "focus"
+    ],
+    "post_delay": 500,
+    "next": "Powder_OpenBag"
+  },
+  "Powder_OpenBag": {
+    "recognition": "TemplateMatch",
+    "template": "powder/bag_entry.png",
+    "roi": [
+      180,
+      610,
+      140,
+      110
+    ],
+    "threshold": 0.45,
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "245",
+      "-Y",
+      "660",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1500,
+    "next": "Powder_OpenEquipmentTab"
+  },
+  "Powder_OpenEquipmentTab": {
+    "recognition": "TemplateMatch",
+    "template": [
+      "powder/equipment_tab.png",
+      "powder/equipment_tab_1652.png"
+    ],
+    "roi": [
+      75,
+      130,
+      90,
+      160
+    ],
+    "threshold": 0.6,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "Powder_OpenEquipmentCraft"
+  },
+  "Powder_OpenEquipmentCraft": {
+    "recognition": "TemplateMatch",
+    "template": "powder/equipment_craft_button.png",
+    "roi": [
+      760,
+      630,
+      260,
+      90
+    ],
+    "threshold": 0.3,
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Powder_ScrollToMercenarySword"
+  },
+  "Powder_ScrollToMercenarySword": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "700",
+      "-Y",
+      "790",
+      "-EndX",
+      "700",
+      "-EndY",
+      "230",
+      "-BaseWidth",
+      "1328",
+      "-BaseHeight",
+      "897",
+      "-DurationMs",
+      "850"
+    ],
+    "post_delay": 500,
+    "next": "Powder_SelectMercenarySword"
+  },
+  "Powder_DragCraftListDownAgain": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "700",
+      "-Y",
+      "790",
+      "-EndX",
+      "700",
+      "-EndY",
+      "230",
+      "-BaseWidth",
+      "1328",
+      "-BaseHeight",
+      "897",
+      "-DurationMs",
+      "850"
+    ],
+    "post_delay": 500,
+    "next": "Powder_DragCraftListToBottom"
+  },
+  "Powder_DragCraftListToBottom": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "700",
+      "-Y",
+      "790",
+      "-EndX",
+      "700",
+      "-EndY",
+      "230",
+      "-BaseWidth",
+      "1328",
+      "-BaseHeight",
+      "897",
+      "-DurationMs",
+      "850"
+    ],
+    "post_delay": 1000,
+    "next": "Powder_SelectMercenarySword"
+  },
+  "Powder_SelectMercenarySword": {
+    "recognition": "TemplateMatch",
+    "template": "powder/mercenary_sword_card.png",
+    "roi": [
+      360,
+      520,
+      240,
+      190
+    ],
+    "threshold": 0.2,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "Powder_VerifySelectedSwordTitle"
+  },
+  "Powder_VerifySelectedSwordTitle": {
+    "recognition": "TemplateMatch",
+    "template": "powder/mercenary_sword_title.png",
+    "roi": [
+      40,
+      40,
+      220,
+      90
+    ],
+    "threshold": 0.35,
+    "order_by": "Score",
+    "action": "DoNothing",
+    "post_delay": 200,
+    "next": "Powder_OpenEnhanceSettings"
+  },
+  "Powder_MainQuantityMax": {
+    "recognition": "TemplateMatch",
+    "template": "powder/main_quantity_max.png",
+    "roi": [
+      360,
+      590,
+      200,
+      90
+    ],
+    "threshold": 0.62,
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "515",
+      "-Y",
+      "790",
+      "-BaseWidth",
+      "1451",
+      "-BaseHeight",
+      "927",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 500,
+    "next": "Powder_OpenEnhanceSettings"
+  },
+  "Powder_OpenEnhanceSettings": {
+    "recognition": "TemplateMatch",
+    "template": "powder/enhance_settings_button.png",
+    "roi": [
+      640,
+      650,
+      260,
+      70
+    ],
+    "threshold": 0.1,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1000,
+    "next": "Powder_CheckAutoDismantle"
+  },
+  "Powder_CheckTargetValueSeven": {
+    "next": [
+      "Powder_TargetValueAlreadySeven",
+      "Powder_TargetValueSix"
+    ]
+  },
+  "Powder_TargetValueAlreadySeven": {
+    "recognition": "OCR",
+    "expected": [
+      "7"
+    ],
+    "roi": [
+      20,
+      115,
+      60,
+      60
+    ],
+    "action": "DoNothing",
+    "post_delay": 200,
+    "next": "Powder_SettingsQuantityMax",
+    "timeout": 1200
+  },
+  "Powder_TargetValueSix": {
+    "recognition": "TemplateMatch",
+    "template": "powder/enhance_settings_title.png",
+    "roi": [
+      260,
+      60,
+      260,
+      80
+    ],
+    "threshold": 0.62,
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "762",
+      "-Y",
+      "229",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 300,
+    "next": "Powder_TargetValuePlusToSeven"
+  },
+  "Powder_TargetValuePlusToSeven": {
+    "recognition": "TemplateMatch",
+    "template": "powder/enhance_settings_title.png",
+    "roi": [
+      260,
+      60,
+      260,
+      80
+    ],
+    "threshold": 0.62,
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "931",
+      "-Y",
+      "189",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 300,
+    "next": "Powder_VerifyTargetValueSeven"
+  },
+  "Powder_VerifyTargetValueSeven": {
+    "recognition": "OCR",
+    "expected": [
+      "7"
+    ],
+    "roi": [
+      20,
+      115,
+      60,
+      60
+    ],
+    "action": "DoNothing",
+    "post_delay": 200,
+    "next": "Powder_SettingsQuantityMax",
+    "timeout": 1200,
+    "on_error": "Powder_SettingsQuantityMax"
+  },
+  "Powder_SettingsQuantityMax": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "821",
+      "-Y",
+      "420",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 700,
+    "next": "Powder_ConfirmEnhance"
+  },
+  "Powder_VerifySettingsQuantityMax": {
+    "recognition": "OCR",
+    "expected": [
+      "2000"
+    ],
+    "roi": [
+      20,
+      315,
+      120,
+      60
+    ],
+    "action": "DoNothing",
+    "post_delay": 200,
+    "next": "Powder_CheckAutoDismantle",
+    "timeout": 1200,
+    "on_error": "Powder_CheckAutoDismantle"
+  },
+  "Powder_CheckAutoDismantle": {
+    "next": [
+      "Powder_AutoDismantleAlreadyOn",
+      "Powder_EnableAutoDismantle"
+    ]
+  },
+  "Powder_AutoDismantleAlreadyOn": {
+    "recognition": "TemplateMatch",
+    "template": "powder/auto_dismantle_on.png",
+    "roi": [
+      880,
+      470,
+      110,
+      90
+    ],
+    "threshold": 0.72,
+    "action": "DoNothing",
+    "post_delay": 200,
+    "next": "Powder_SettingsQuantityMax"
+  },
+  "Powder_EnableAutoDismantle": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "858",
+      "-Y",
+      "471",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 500,
+    "next": "Powder_SettingsQuantityMax"
+  },
+  "Powder_ConfirmEnhance": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "700",
+      "-Y",
+      "553",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 8000,
+    "next": "Powder_ConfirmEnhanceResult"
+  },
+  "Powder_ConfirmEnhanceResult": {
+    "recognition": "TemplateMatch",
+    "template": "powder/enhance_result_confirm_button.png",
+    "roi": [
+      430,
+      560,
+      420,
+      100
+    ],
+    "threshold": 0.1,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 2000,
+    "next": "Powder_CheckLoopLimit"
+  },
+  "Stop_CapturePowderAfterCraft": {
+    "recognition": "OCR",
+    "expected": [
+      "__BD2_CAPTURE_POWDER_AFTER_CRAFT__"
+    ],
+    "timeout": 1000
+  },
+  "Powder_ResetCounter": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+      "-Mode",
+      "reset",
+      "-Max",
+      "0"
+    ],
+    "post_delay": 100,
+    "next": "Powder_FocusGame"
+  },
+  "Powder_SelectMercenaryRing": {
+    "recognition": "TemplateMatch",
+    "template": "powder/mercenary_ring_card.png",
+    "roi": [
+      885,
+      520,
+      125,
+      150
+    ],
+    "threshold": 0.2,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "Powder_OpenEnhanceSettings"
+  },
+  "Powder_CheckLoopLimit": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_powder_counter_hidden.vbs",
+      "-Mode",
+      "next"
+    ],
+    "post_delay": 500,
+    "next": "Powder_OpenEnhanceSettings",
+    "on_error": "Powder_StopLoopCountReached"
+  },
+  "Powder_StopLoopCountReached": {
+    "action": "StopTask"
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "startup/touch_to_start.png": {
+    "source": "docs/screenshots/raw/1.png",
+    "box": [
+      765,
+      455,
+      350,
+      75
+    ]
+  },
+  "startup/title_logo.png": {
+    "source": "docs/screenshots/raw/1.png",
+    "box": [
+      735,
+      165,
+      410,
+      145
+    ]
+  },
+  "startup/settings_button.png": {
+    "source": "docs/screenshots/raw/1.png",
+    "box": [
+      20,
+      78,
+      44,
+      44
+    ]
+  },
+  "hud/home_button.png": {
+    "source": "docs/screenshots/raw/2.png",
+    "box": [
+      1400,
+      8,
+      92,
+      66
+    ]
+  },
+  "hud/home_button_720p.png": {
+    "source": "docs/screenshots/raw/4.png",
+    "box": [
+      1172,
+      8,
+      96,
+      70
+    ]
+  },
+  "hud/dpad.png": {
+    "source": "docs/screenshots/raw/2.png",
+    "box": [
+      142,
+      640,
+      158,
+      150
+    ]
+  },
+  "hud/action_cluster.png": {
+    "source": "docs/screenshots/raw/2.png",
+    "box": [
+      1186,
+      548,
+      315,
+      286
+    ]
+  },
+  "home/home_marker.png": {
+    "source": "docs/screenshots/raw/3.png",
+    "box": [
+      1402,
+      20,
+      48,
+      46
+    ]
+  },
+  "home/home_house_720p.png": {
+    "source": "docs/screenshots/raw/5.png",
+    "box": [
+      86,
+      75,
+      54,
+      70
+    ]
+  },
+  "home/task_entry_720p.png": {
+    "source": "docs/screenshots/raw/5.png",
+    "box": [
+      435,
+      628,
+      44,
+      64
+    ]
+  },
+  "home/activity_entry_720p.png": {
+    "source": "docs/screenshots/raw/5.png",
+    "box": [
+      576,
+      628,
+      44,
+      64
+    ]
+  },
+  "home/mail_entry_720p.png": {
+    "source": "docs/screenshots/raw/5.png",
+    "box": [
+      1030,
+      24,
+      54,
+      40
+    ]
+  },
+  "reward/mail_entry.png": {
+    "source": "docs/screenshots/raw/3.png",
+    "box": [
+      1263,
+      28,
+      54,
+      36
+    ]
+  },
+  "reward/task_entry.png": {
+    "source": "docs/screenshots/raw/3.png",
+    "box": [
+      514,
+      784,
+      56,
+      60
+    ]
+  },
+  "reward/activity_entry.png": {
+    "source": "docs/screenshots/raw/3.png",
+    "box": [
+      697,
+      784,
+      54,
+      60
+    ]
+  },
+  "shop/shop_entry.png": {
+    "source": "docs/screenshots/raw/3.png",
+    "box": [
+      784,
+      784,
+      56,
+      60
+    ]
+  },
+  "combat/quick_hunt_entry.png": {
+    "source": "docs/screenshots/raw/3.png",
+    "box": [
+      1372,
+      154,
+      96,
+      178
+    ]
+  },
+  "powder/auto_dismantle_on.png": {
+    "source": "resource/image/7.png",
+    "box": [
+      598,
+      411,
+      44,
+      35
+    ]
+  },
+  "powder/bag_entry.png": {
+    "source": "resource/image/1.png",
+    "box": [
+      0,
+      0,
+      81,
+      86
+    ]
+  },
+  "powder/equipment_tab.png": {
+    "source": "resource/image/2.png",
+    "box": [
+      48,
+      176,
+      48,
+      60
+    ]
+  },
+  "powder/equipment_craft_button.png": {
+    "source": "resource/image/4.png",
+    "box": [
+      898,
+      836,
+      174,
+      42
+    ]
+  },
+  "powder/mercenary_sword_card.png": {
+    "source": "resource/image/5.png",
+    "box": [
+      416,
+      688,
+      110,
+      105
+    ]
+  },
+  "powder/mercenary_sword_title.png": {
+    "source": "resource/image/6.png",
+    "box": [
+      76,
+      82,
+      132,
+      42
+    ]
+  },
+  "powder/main_quantity_max.png": {
+    "source": "resource/image/6.png",
+    "box": [
+      440,
+      761,
+      128,
+      54
+    ]
+  },
+  "powder/enhance_settings_button.png": {
+    "source": "resource/image/6.png",
+    "box": [
+      750,
+      858,
+      204,
+      48
+    ]
+  },
+  "powder/enhance_settings_title.png": {
+    "source": "resource/image/7.png",
+    "box": [
+      18,
+      20,
+      132,
+      42
+    ]
+  },
+  "powder/settings_quantity_max.png": {
+    "source": "resource/image/7.png",
+    "box": [
+      526,
+      344,
+      112,
+      36
+    ]
+  },
+  "powder/enhance_confirm_button.png": {
+    "source": "resource/image/7.png",
+    "box": [
+      334,
+      509,
+      136,
+      40
+    ]
+  },
+  "powder/enhance_result_title.png": {
+    "source": "resource/image/8.png",
+    "box": [
+      245,
+      46,
+      124,
+      48
+    ]
+  },
+  "powder/enhance_result_confirm_button.png": {
+    "source": "resource/image/8.png",
+    "box": [
+      176,
+      477,
+      248,
+      42
+    ]
+  }
+}

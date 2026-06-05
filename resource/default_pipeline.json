@@ -1,0 +1,28 @@
+{
+  "Default": {
+    "rate_limit": 1000,
+    "timeout": 20000,
+    "pre_delay": 200,
+    "post_delay": 500
+  },
+  "TemplateMatch": {
+    "recognition": "TemplateMatch",
+    "threshold": 0.78,
+    "method": 5
+  },
+  "OCR": {
+    "recognition": "OCR",
+    "threshold": 0.35,
+    "order_by": "Horizontal",
+    "replace": []
+  },
+  "Click": {
+    "action": "Click",
+    "target": true
+  },
+  "Swipe": {
+    "action": "Swipe",
+    "duration": 250
+  }
+}
+

@@ -1,0 +1,148 @@
+{
+  "ClaimRewards": {
+    "next": "OpenMail"
+  },
+  "OpenMail": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "1073",
+      "-Y",
+      "39",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 2500,
+    "next": "Click_ClaimAllMail"
+  },
+  "ClaimMail": {
+    "next": "Click_ClaimAllMail"
+  },
+  "Click_ClaimAllMail": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "1124",
+      "-Y",
+      "671",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "BackFromMail"
+  },
+  "BackFromMail": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "115",
+      "-Y",
+      "33",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "180"
+    ],
+    "post_delay": 1800,
+    "next": "ClaimDailyMissionRewards"
+  },
+  "ClaimDailyMissionRewards": {
+    "next": "OpenDailyMission"
+  },
+  "OpenDailyMission": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "455",
+      "-Y",
+      "660",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1500,
+    "next": "Stop_CaptureDailyMissionPage"
+  },
+  "Stop_CaptureDailyMissionPage": {
+    "recognition": "OCR",
+    "expected": [
+      "__BD2_CAPTURE_DAILY_MISSION_PAGE__"
+    ],
+    "timeout": 1000
+  },
+  "Click_ClaimDailyReward": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "1080",
+      "-Y",
+      "650",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "BackFromDailyMission"
+  },
+  "BackFromDailyMission": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "27"
+    ],
+    "post_delay": 1200,
+    "next": "EnsureHome"
+  }
+}

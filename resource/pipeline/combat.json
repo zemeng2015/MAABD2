@@ -1,0 +1,131 @@
+{
+  "TowerClimb": {
+    "next": "TowerLoop"
+  },
+  "TowerLoop": {
+    "next": [
+      "TowerConfirmNextFloor",
+      "TowerGoNextFloor",
+      "TowerAutoBattleOn",
+      "TowerClickAutoBattleFallback"
+    ]
+  },
+  "TowerAutoBattleOn": {
+    "recognition": "TemplateMatch",
+    "template": "combat/tower/auto_battle_on.png",
+    "roi": [
+      1080,
+      600,
+      260,
+      110
+    ],
+    "threshold": 0.72,
+    "action": "DoNothing",
+    "post_delay": 5000,
+    "next": "TowerLoop"
+  },
+  "TowerClickAutoBattleFallback": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "1246",
+      "-Y",
+      "674",
+      "-BaseWidth",
+      "1351",
+      "-BaseHeight",
+      "715",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 5000,
+    "next": "TowerLoop"
+  },
+  "TowerGoNextFloor": {
+    "recognition": "TemplateMatch",
+    "template": "combat/tower/next_floor_button.png",
+    "roi": [
+      900,
+      0,
+      440,
+      720
+    ],
+    "threshold": 0.70,
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "1234",
+      "-Y",
+      "687",
+      "-BaseWidth",
+      "1355",
+      "-BaseHeight",
+      "724",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1500,
+    "next": "TowerLoop"
+  },
+  "TowerConfirmNextFloor": {
+    "recognition": "TemplateMatch",
+    "template": "combat/tower/confirm_next_button.png",
+    "roi": [
+      520,
+      300,
+      360,
+      180
+    ],
+    "threshold": 0.72,
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-X",
+      "732",
+      "-Y",
+      "412",
+      "-BaseWidth",
+      "1342",
+      "-BaseHeight",
+      "705",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 5000,
+    "next": "TowerLoop"
+  },
+  "FixedStageFarming": {
+    "enabled": false,
+    "next": [
+      "EnsureHome",
+      "Stop_CombatNotImplemented"
+    ]
+  },
+  "SetCombatCount": {
+    "recognition": "OCR",
+    "expected": "1"
+  },
+  "FarmUntilEnergyEmpty": {
+    "enabled": false
+  },
+  "Stop_CombatNotImplemented": {
+    "action": "StopTask"
+  }
+}
