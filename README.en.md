@@ -21,7 +21,7 @@ If a task does not behave as expected, please keep the exported MFAAvalonia logs
 ## ✨ Features
 
 - 🏠 **Connect and return home**: Detects the login screen, home screen, and some activity/stage screens. When needed, it presses `H` or clicks the top-right Home button to return to the home screen.
-- 🪟 **Normalize window size**: Resizes the BD2 PC client area to `1280x720`, keeping templates, ROIs, and click coordinates on a stable baseline.
+- 🪟 **Automatic window normalization**: Public tasks first check the BD2 PC client area and resize it to the `1280x720` script baseline when needed.
 - 🖥️ **PC window control**: Connects to the `BrownDust II` client window through the Win32 controller, then uses hidden helper scripts for real mouse clicks, drags, key presses, and window focusing.
 - 🎁 **Reward claiming**: Enters visible reward entry points such as mail from the home screen and attempts to claim available rewards. More sign-in, mission, and event templates will be added gradually.
 - ⚙️ **Auto powder farm**: Opens inventory and equipment crafting, locates the selected N-rarity item, opens enhancement settings, enables auto dismantle, sets crafting quantity, then loops crafting and dismantling for powder.
@@ -56,7 +56,7 @@ Work still in progress:
 3. Start MFAAvalonia as administrator.
 4. Open the Brown Dust 2 PC client and keep the game window visible.
 5. Select the MaaBD2 resource and the Windows PC controller in MFAAvalonia.
-6. Run "Normalize Window Size" first, then run "Connect and Return Home" to confirm that window binding and click permissions work.
+6. Run "Connect and Return Home" first to confirm that window binding, window-size checking, and click permissions work.
 
 For detailed setup steps, see [PC Setup](docs/en_us/pc-setup.md).
 

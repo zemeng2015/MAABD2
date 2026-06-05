@@ -1,5 +1,22 @@
 {
   "Startup": {
+    "next": "Startup_NormalizeWindow"
+  },
+  "Startup_NormalizeWindow": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "resize",
+      "-TargetWidth",
+      "1280",
+      "-TargetHeight",
+      "720"
+    ],
+    "post_delay": 300,
     "next": [
       "WaitForHome"
     ]

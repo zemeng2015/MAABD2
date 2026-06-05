@@ -284,6 +284,11 @@ function Set-ClientSize([int]$targetWidth, [int]$targetHeight) {
     $windowWidth = $windowRect.Right - $windowRect.Left
     $windowHeight = $windowRect.Bottom - $windowRect.Top
 
+    if ([Math]::Abs($clientWidth - $targetWidth) -le 2 -and [Math]::Abs($clientHeight - $targetHeight) -le 2) {
+        Write-DebugLog "resize skipped targetClient=${targetWidth}x${targetHeight} actualClient=${clientWidth}x${clientHeight}"
+        return
+    }
+
     $extraWidth = $windowWidth - $clientWidth
     $extraHeight = $windowHeight - $clientHeight
     $newWindowWidth = $targetWidth + $extraWidth

@@ -4,7 +4,7 @@ These notes are based on the current screenshot categories: startup screen, expl
 
 ## General Rules
 
-- The current PC task baseline is a `1280x720` client area. Run "Normalize Window Size" before tasks when possible; the powder-farming task also normalizes the window at entry.
+- The current PC task baseline is a `1280x720` client area. Public tasks automatically check the window size at entry; if the client area is already `1280x720`, resizing is skipped.
 - Do not use full screenshots as templates.
 - Prefer stable icons, button borders, fixed text, or icon-plus-label combinations.
 - Avoid character art, event banners, dynamic effects, resource numbers, timers, and notification badge numbers.
@@ -103,7 +103,7 @@ To regenerate the templates, run `tools/crop_templates.ps1`.
 
 Auto powder farming was originally tuned on a larger client window. To reduce click offsets, the current flow now uses a `1280x720` baseline:
 
-- The task entry resizes the BD2 client area to `1280x720`.
+- The task entry checks and resizes the BD2 client area to `1280x720` when needed.
 - The bag entry clicks the recognized `{BOX}` center instead of an old fixed coordinate.
 - The equipment-tab template scores lower at `1280x720`, so its threshold is temporarily set to `0.40`.
 - Equipment-crafting list drags have been converted from the old `1328x897` coordinate baseline to `1280x720`.

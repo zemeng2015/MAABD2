@@ -43,13 +43,6 @@
   ],
   "task": [
     {
-      "name": "统一窗口大小",
-      "label": "$task_normalize_window",
-      "entry": "NormalizeWindow",
-      "default_check": false,
-      "description": "$task_normalize_window_description"
-    },
-    {
       "name": "连接并回到主界面",
       "label": "$task_startup",
       "entry": "Startup",
