@@ -134,39 +134,8 @@
       "-Mode",
       "log",
       "-Message",
-      "weekly: cassette menu opened, selecting story game"
+      "weekly: cassette menu opened, finding cassette"
     ],
-    "next": "Weekly_OpenStoryGameTab"
-  },
-  "Weekly_OpenStoryGameTab": {
-    "recognition": "TemplateMatch",
-    "template": "weekly/story_game_tab.png",
-    "roi": [
-      0,
-      0,
-      1280,
-      220
-    ],
-    "threshold": 0.45,
-    "order_by": "Score",
-    "action": "Command",
-    "exec": "wscript.exe",
-    "args": [
-      "//B",
-      "//Nologo",
-      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
-      "-Mode",
-      "click",
-      "-Box",
-      "{BOX}",
-      "-BaseWidth",
-      "1280",
-      "-BaseHeight",
-      "720",
-      "-HoldMs",
-      "220"
-    ],
-    "post_delay": 1000,
     "next": "Weekly_Log_RouteStart"
   },
   "Weekly_Log_RouteStart": {
@@ -197,9 +166,9 @@
     "template": "weekly/cassette_07.png",
     "roi": [
       0,
-      0,
+      40,
       1280,
-      720
+      190
     ],
     "threshold": 0.5,
     "order_by": "Score",
@@ -567,9 +536,9 @@
     "template": "weekly/cassette_08.png",
     "roi": [
       0,
-      0,
+      40,
       1280,
-      720
+      190
     ],
     "threshold": 0.5,
     "order_by": "Score",
@@ -937,9 +906,9 @@
     "template": "weekly/cassette_09.png",
     "roi": [
       0,
-      0,
+      40,
       1280,
-      720
+      190
     ],
     "threshold": 0.5,
     "order_by": "Score",
@@ -1307,9 +1276,9 @@
     "template": "weekly/cassette_13.png",
     "roi": [
       0,
-      0,
+      40,
       1280,
-      720
+      190
     ],
     "threshold": 0.5,
     "order_by": "Score",
@@ -1677,9 +1646,9 @@
     "template": "weekly/cassette_16.png",
     "roi": [
       0,
-      0,
+      40,
       1280,
-      720
+      190
     ],
     "threshold": 0.5,
     "order_by": "Score",
@@ -2047,9 +2016,9 @@
     "template": "weekly/cassette_17.png",
     "roi": [
       0,
-      0,
+      40,
       1280,
-      720
+      190
     ],
     "threshold": 0.5,
     "order_by": "Score",
