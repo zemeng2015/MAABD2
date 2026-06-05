@@ -7,6 +7,8 @@
   "controller_windows_description": "Connects to the Brown Dust 2 PC client window through the Win32 controller.",
   "resource_cn": "Chinese PC Resources",
   "resource_cn_description": "Brown Dust 2 PC Chinese UI resource pack.",
+  "task_normalize_window": "Normalize Window Size",
+  "task_normalize_window_description": "Resize the Brown Dust 2 PC client area to 1280x720 to reduce template and click-coordinate offsets.",
   "task_startup": "Connect And Return Home",
   "task_startup_description": "With the game already open, identify the current screen, close common popups, and confirm the home screen.",
   "task_rewards": "Claim Rewards",

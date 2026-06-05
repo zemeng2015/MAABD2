@@ -7,6 +7,8 @@
   "controller_windows_description": "通过 Win32 控制器连接棕色尘埃2 PC 客户端窗口。",
   "resource_cn": "中文 PC 资源",
   "resource_cn_description": "棕色尘埃2 PC 中文界面资源包。",
+  "task_normalize_window": "统一窗口大小",
+  "task_normalize_window_description": "将棕色尘埃2 PC 客户端客户区调整为 1280x720，降低模板和点击坐标偏移。",
   "task_startup": "连接并回到主界面",
   "task_startup_description": "在游戏已打开的前提下，识别当前界面，关闭常见弹窗，并确认回到主界面。",
   "task_rewards": "领取奖励",

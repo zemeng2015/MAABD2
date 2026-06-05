@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("key", "click", "wheel", "drag", "focus")]
+    [ValidateSet("key", "click", "wheel", "drag", "focus", "resize")]
     [string]$Mode,
 
     [int]$KeyCode = 0,
@@ -12,6 +12,8 @@ param(
     [string]$Box = "",
     [int]$BaseWidth = 1280,
     [int]$BaseHeight = 719,
+    [int]$TargetWidth = 1280,
+    [int]$TargetHeight = 720,
     [int]$DurationMs = 700,
     [int]$HoldMs = 120
 )
@@ -88,6 +90,12 @@ public static class Bd2InputNative
 
     [DllImport("user32.dll")]
     public static extern bool GetClientRect(IntPtr hWnd, out RECT lpRect);
+
+    [DllImport("user32.dll")]
+    public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
 
     [DllImport("user32.dll")]
     public static extern bool ClientToScreen(IntPtr hWnd, ref POINT lpPoint);
@@ -260,8 +268,44 @@ function Send-Drag([int]$sx, [int]$sy, [int]$ex, [int]$ey, [int]$bw, [int]$bh, [
     Write-DebugLog "drag base=($sx,$sy)->($ex,$ey),$bw,$bh client=$($start.ClientWidth)x$($start.ClientHeight) screen=($($startPt.X),$($startPt.Y))->($($endPt.X),$($endPt.Y)) durationMs=$duration"
 }
 
+function Set-ClientSize([int]$targetWidth, [int]$targetHeight) {
+    $clientRect = New-Object Bd2InputNative+RECT
+    if (-not [Bd2InputNative]::GetClientRect($hwnd, [ref]$clientRect)) {
+        throw "GetClientRect failed."
+    }
+
+    $windowRect = New-Object Bd2InputNative+RECT
+    if (-not [Bd2InputNative]::GetWindowRect($hwnd, [ref]$windowRect)) {
+        throw "GetWindowRect failed."
+    }
+
+    $clientWidth = $clientRect.Right - $clientRect.Left
+    $clientHeight = $clientRect.Bottom - $clientRect.Top
+    $windowWidth = $windowRect.Right - $windowRect.Left
+    $windowHeight = $windowRect.Bottom - $windowRect.Top
+
+    $extraWidth = $windowWidth - $clientWidth
+    $extraHeight = $windowHeight - $clientHeight
+    $newWindowWidth = $targetWidth + $extraWidth
+    $newWindowHeight = $targetHeight + $extraHeight
+
+    if (-not [Bd2InputNative]::MoveWindow($hwnd, $windowRect.Left, $windowRect.Top, $newWindowWidth, $newWindowHeight, $true)) {
+        throw "MoveWindow failed."
+    }
+
+    Start-Sleep -Milliseconds 500
+
+    $newClientRect = New-Object Bd2InputNative+RECT
+    [Bd2InputNative]::GetClientRect($hwnd, [ref]$newClientRect) | Out-Null
+    $newClientWidth = $newClientRect.Right - $newClientRect.Left
+    $newClientHeight = $newClientRect.Bottom - $newClientRect.Top
+    Write-DebugLog "resize targetClient=${targetWidth}x${targetHeight} oldClient=${clientWidth}x${clientHeight} oldWindow=${windowWidth}x${windowHeight} newWindow=${newWindowWidth}x${newWindowHeight} actualClient=${newClientWidth}x${newClientHeight}"
+}
+
 if ($Mode -eq "focus") {
     Write-DebugLog "focus"
+} elseif ($Mode -eq "resize") {
+    Set-ClientSize $TargetWidth $TargetHeight
 } elseif ($Mode -eq "key") {
     Send-Key $KeyCode
 } elseif ($Mode -eq "click") {
