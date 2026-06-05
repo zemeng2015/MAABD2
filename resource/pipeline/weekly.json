@@ -1,5 +1,19 @@
 {
   "WeeklyAbsorbRally": {
+    "next": "Weekly_Log_Start"
+  },
+  "Weekly_Log_Start": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "log",
+      "-Message",
+      "weekly: start"
+    ],
     "next": "Weekly_NormalizeWindow"
   },
   "Weekly_NormalizeWindow": {
@@ -17,6 +31,20 @@
       "720"
     ],
     "post_delay": 300,
+    "next": "Weekly_Log_WindowReady"
+  },
+  "Weekly_Log_WindowReady": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "log",
+      "-Message",
+      "weekly: window normalized"
+    ],
     "next": "Weekly_CheckHome"
   },
   "Weekly_CheckHome": {
@@ -37,7 +65,7 @@
     ],
     "threshold": 0.72,
     "action": "DoNothing",
-    "next": "Weekly_OpenGameCassetteFromHome"
+    "next": "Weekly_Log_HomeReady"
   },
   "Weekly_Home_ActivityEntry720p": {
     "recognition": "TemplateMatch",
@@ -50,13 +78,27 @@
     ],
     "threshold": 0.72,
     "action": "DoNothing",
-    "next": "Weekly_OpenGameCassetteFromHome"
+    "next": "Weekly_Log_HomeReady"
   },
   "Weekly_Home_MailEntry": {
     "recognition": "TemplateMatch",
     "template": "reward/mail_entry.png",
     "threshold": 0.65,
     "action": "DoNothing",
+    "next": "Weekly_Log_HomeReady"
+  },
+  "Weekly_Log_HomeReady": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "log",
+      "-Message",
+      "weekly: home detected, opening cassette menu"
+    ],
     "next": "Weekly_OpenGameCassetteFromHome"
   },
   "Weekly_OpenGameCassetteFromHome": {
@@ -80,6 +122,20 @@
       "220"
     ],
     "post_delay": 1200,
+    "next": "Weekly_Log_CassetteMenuOpened"
+  },
+  "Weekly_Log_CassetteMenuOpened": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "log",
+      "-Message",
+      "weekly: cassette menu opened, selecting story game"
+    ],
     "next": "Weekly_OpenStoryGameTab"
   },
   "Weekly_OpenStoryGameTab": {
@@ -91,7 +147,7 @@
       1280,
       220
     ],
-    "threshold": 0.5,
+    "threshold": 0.45,
     "order_by": "Score",
     "action": "Command",
     "exec": "wscript.exe",
@@ -111,6 +167,20 @@
       "220"
     ],
     "post_delay": 1000,
+    "next": "Weekly_Log_RouteStart"
+  },
+  "Weekly_Log_RouteStart": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "log",
+      "-Message",
+      "weekly: story game selected, finding cassette"
+    ],
     "next": "Weekly_RouteStart"
   },
   "Weekly_RouteStart": {

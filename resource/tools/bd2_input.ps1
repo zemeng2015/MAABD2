@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("key", "click", "wheel", "drag", "focus", "resize")]
+    [ValidateSet("key", "click", "wheel", "drag", "focus", "resize", "log")]
     [string]$Mode,
 
     [int]$KeyCode = 0,
@@ -15,7 +15,8 @@ param(
     [int]$TargetWidth = 1280,
     [int]$TargetHeight = 720,
     [int]$DurationMs = 700,
-    [int]$HoldMs = 120
+    [int]$HoldMs = 120,
+    [string]$Message = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -307,7 +308,9 @@ function Set-ClientSize([int]$targetWidth, [int]$targetHeight) {
     Write-DebugLog "resize targetClient=${targetWidth}x${targetHeight} oldClient=${clientWidth}x${clientHeight} oldWindow=${windowWidth}x${windowHeight} newWindow=${newWindowWidth}x${newWindowHeight} actualClient=${newClientWidth}x${newClientHeight}"
 }
 
-if ($Mode -eq "focus") {
+if ($Mode -eq "log") {
+    Write-DebugLog "stage $Message"
+} elseif ($Mode -eq "focus") {
     Write-DebugLog "focus"
 } elseif ($Mode -eq "resize") {
     Set-ClientSize $TargetWidth $TargetHeight
