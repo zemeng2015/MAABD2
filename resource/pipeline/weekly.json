@@ -1,0 +1,1786 @@
+{
+  "WeeklyAbsorbRally": {
+    "next": "Weekly_NormalizeWindow"
+  },
+  "Weekly_NormalizeWindow": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "resize",
+      "-TargetWidth",
+      "1280",
+      "-TargetHeight",
+      "720"
+    ],
+    "post_delay": 300,
+    "next": "Weekly_CheckHome"
+  },
+  "Weekly_CheckHome": {
+    "next": [
+      "Weekly_Home_TaskEntry720p",
+      "Weekly_Home_ActivityEntry720p",
+      "Weekly_Home_MailEntry"
+    ]
+  },
+  "Weekly_Home_TaskEntry720p": {
+    "recognition": "TemplateMatch",
+    "template": "home/task_entry_720p.png",
+    "roi": [
+      390,
+      590,
+      130,
+      120
+    ],
+    "threshold": 0.72,
+    "action": "DoNothing",
+    "next": "Weekly_OpenGameCassette"
+  },
+  "Weekly_Home_ActivityEntry720p": {
+    "recognition": "TemplateMatch",
+    "template": "home/activity_entry_720p.png",
+    "roi": [
+      540,
+      590,
+      120,
+      120
+    ],
+    "threshold": 0.72,
+    "action": "DoNothing",
+    "next": "Weekly_OpenGameCassette"
+  },
+  "Weekly_Home_MailEntry": {
+    "recognition": "TemplateMatch",
+    "template": "reward/mail_entry.png",
+    "threshold": 0.65,
+    "action": "DoNothing",
+    "next": "Weekly_OpenGameCassette"
+  },
+  "Weekly_OpenGameCassette": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/game_cassette_entry.png",
+    "roi": [
+      1040,
+      520,
+      240,
+      200
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_OpenStoryGameTab"
+  },
+  "Weekly_OpenStoryGameTab": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/story_game_tab.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      220
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_RouteStart"
+  },
+  "Weekly_RouteStart": {
+    "next": "Weekly_RunCassette07"
+  },
+  "Weekly_RunCassette07": {
+    "next": "Weekly_FindCassette07"
+  },
+  "Weekly_FindCassette07": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_07.png",
+    "roi": [
+      80,
+      140,
+      1120,
+      500
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_ClickExplore07"
+  },
+  "Weekly_ClickExplore07": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_explore.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickAbsorb07"
+  },
+  "Weekly_ClickAbsorb07": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_absorb.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickRally07"
+  },
+  "Weekly_ClickRally07": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_rally.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_EnterMapSelect07"
+  },
+  "Weekly_EnterMapSelect07": {
+    "next": [
+      "Weekly_ClickHandIcon07",
+      "Weekly_PressF07"
+    ]
+  },
+  "Weekly_ClickHandIcon07": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/hand_interact.png",
+    "roi": [
+      980,
+      520,
+      300,
+      200
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap07"
+  },
+  "Weekly_PressF07": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap07"
+  },
+  "Weekly_SelectMap07": {
+    "next": [
+      "Weekly_ClickMapName07",
+      "Weekly_SwipeMapList07"
+    ]
+  },
+  "Weekly_ClickMapName07": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_name_07.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 800,
+    "next": "Weekly_ClickMagicCircle07"
+  },
+  "Weekly_SwipeMapList07": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectMap07"
+  },
+  "Weekly_ClickMagicCircle07": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_RunCassette08"
+  },
+  "Weekly_RunCassette08": {
+    "next": "Weekly_FindCassette08"
+  },
+  "Weekly_FindCassette08": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_08.png",
+    "roi": [
+      80,
+      140,
+      1120,
+      500
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_ClickExplore08"
+  },
+  "Weekly_ClickExplore08": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_explore.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickAbsorb08"
+  },
+  "Weekly_ClickAbsorb08": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_absorb.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickRally08"
+  },
+  "Weekly_ClickRally08": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_rally.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_EnterMapSelect08"
+  },
+  "Weekly_EnterMapSelect08": {
+    "next": [
+      "Weekly_ClickHandIcon08",
+      "Weekly_PressF08"
+    ]
+  },
+  "Weekly_ClickHandIcon08": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/hand_interact.png",
+    "roi": [
+      980,
+      520,
+      300,
+      200
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap08"
+  },
+  "Weekly_PressF08": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap08"
+  },
+  "Weekly_SelectMap08": {
+    "next": [
+      "Weekly_ClickMapName08",
+      "Weekly_SwipeMapList08"
+    ]
+  },
+  "Weekly_ClickMapName08": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_name_08.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 800,
+    "next": "Weekly_ClickMagicCircle08"
+  },
+  "Weekly_SwipeMapList08": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectMap08"
+  },
+  "Weekly_ClickMagicCircle08": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_RunCassette09"
+  },
+  "Weekly_RunCassette09": {
+    "next": "Weekly_FindCassette09"
+  },
+  "Weekly_FindCassette09": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_09.png",
+    "roi": [
+      80,
+      140,
+      1120,
+      500
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_ClickExplore09"
+  },
+  "Weekly_ClickExplore09": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_explore.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickAbsorb09"
+  },
+  "Weekly_ClickAbsorb09": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_absorb.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickRally09"
+  },
+  "Weekly_ClickRally09": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_rally.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_EnterMapSelect09"
+  },
+  "Weekly_EnterMapSelect09": {
+    "next": [
+      "Weekly_ClickHandIcon09",
+      "Weekly_PressF09"
+    ]
+  },
+  "Weekly_ClickHandIcon09": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/hand_interact.png",
+    "roi": [
+      980,
+      520,
+      300,
+      200
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap09"
+  },
+  "Weekly_PressF09": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap09"
+  },
+  "Weekly_SelectMap09": {
+    "next": [
+      "Weekly_ClickMapName09",
+      "Weekly_SwipeMapList09"
+    ]
+  },
+  "Weekly_ClickMapName09": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_name_09.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 800,
+    "next": "Weekly_ClickMagicCircle09"
+  },
+  "Weekly_SwipeMapList09": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectMap09"
+  },
+  "Weekly_ClickMagicCircle09": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_RunCassette13"
+  },
+  "Weekly_RunCassette13": {
+    "next": "Weekly_FindCassette13"
+  },
+  "Weekly_FindCassette13": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_13.png",
+    "roi": [
+      80,
+      140,
+      1120,
+      500
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_ClickExplore13"
+  },
+  "Weekly_ClickExplore13": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_explore.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickAbsorb13"
+  },
+  "Weekly_ClickAbsorb13": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_absorb.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickRally13"
+  },
+  "Weekly_ClickRally13": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_rally.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_EnterMapSelect13"
+  },
+  "Weekly_EnterMapSelect13": {
+    "next": [
+      "Weekly_ClickHandIcon13",
+      "Weekly_PressF13"
+    ]
+  },
+  "Weekly_ClickHandIcon13": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/hand_interact.png",
+    "roi": [
+      980,
+      520,
+      300,
+      200
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap13"
+  },
+  "Weekly_PressF13": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap13"
+  },
+  "Weekly_SelectMap13": {
+    "next": [
+      "Weekly_ClickMapName13",
+      "Weekly_SwipeMapList13"
+    ]
+  },
+  "Weekly_ClickMapName13": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_name_13.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 800,
+    "next": "Weekly_ClickMagicCircle13"
+  },
+  "Weekly_SwipeMapList13": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectMap13"
+  },
+  "Weekly_ClickMagicCircle13": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_RunCassette16"
+  },
+  "Weekly_RunCassette16": {
+    "next": "Weekly_FindCassette16"
+  },
+  "Weekly_FindCassette16": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_16.png",
+    "roi": [
+      80,
+      140,
+      1120,
+      500
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_ClickExplore16"
+  },
+  "Weekly_ClickExplore16": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_explore.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickAbsorb16"
+  },
+  "Weekly_ClickAbsorb16": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_absorb.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickRally16"
+  },
+  "Weekly_ClickRally16": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_rally.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_EnterMapSelect16"
+  },
+  "Weekly_EnterMapSelect16": {
+    "next": [
+      "Weekly_ClickHandIcon16",
+      "Weekly_PressF16"
+    ]
+  },
+  "Weekly_ClickHandIcon16": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/hand_interact.png",
+    "roi": [
+      980,
+      520,
+      300,
+      200
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap16"
+  },
+  "Weekly_PressF16": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap16"
+  },
+  "Weekly_SelectMap16": {
+    "next": [
+      "Weekly_ClickMapName16",
+      "Weekly_SwipeMapList16"
+    ]
+  },
+  "Weekly_ClickMapName16": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_name_16.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 800,
+    "next": "Weekly_ClickMagicCircle16"
+  },
+  "Weekly_SwipeMapList16": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectMap16"
+  },
+  "Weekly_ClickMagicCircle16": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_RunCassette17"
+  },
+  "Weekly_RunCassette17": {
+    "next": "Weekly_FindCassette17"
+  },
+  "Weekly_FindCassette17": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/cassette_17.png",
+    "roi": [
+      80,
+      140,
+      1120,
+      500
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_ClickExplore17"
+  },
+  "Weekly_ClickExplore17": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_explore.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickAbsorb17"
+  },
+  "Weekly_ClickAbsorb17": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_absorb.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickRally17"
+  },
+  "Weekly_ClickRally17": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/action_rally.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_EnterMapSelect17"
+  },
+  "Weekly_EnterMapSelect17": {
+    "next": [
+      "Weekly_ClickHandIcon17",
+      "Weekly_PressF17"
+    ]
+  },
+  "Weekly_ClickHandIcon17": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/hand_interact.png",
+    "roi": [
+      980,
+      520,
+      300,
+      200
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap17"
+  },
+  "Weekly_PressF17": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectMap17"
+  },
+  "Weekly_SelectMap17": {
+    "next": [
+      "Weekly_ClickMapName17",
+      "Weekly_SwipeMapList17"
+    ]
+  },
+  "Weekly_ClickMapName17": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_name_17.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 800,
+    "next": "Weekly_ClickMagicCircle17"
+  },
+  "Weekly_SwipeMapList17": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectMap17"
+  },
+  "Weekly_ClickMagicCircle17": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      0,
+      0,
+      1280,
+      720
+    ],
+    "threshold": 0.55,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_Stop"
+  },
+  "Weekly_Stop": {
+    "action": "StopTask"
+  }
+}

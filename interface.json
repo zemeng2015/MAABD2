@@ -64,6 +64,16 @@
       "description": "$task_daily_description"
     },
     {
+      "name": "每周吸收召集",
+      "label": "$task_weekly_absorb_rally",
+      "entry": "WeeklyAbsorbRally",
+      "default_check": false,
+      "description": "$task_weekly_absorb_rally_description",
+      "option": [
+        "weekly_cassette_route"
+      ]
+    },
+    {
       "name": "自动刷粉",
       "label": "$task_powder",
       "entry": "PowderFarm",
@@ -123,6 +133,90 @@
           "pipeline_override": {
             "FarmUntilEnergyEmpty": {
               "enabled": true
+            }
+          }
+        }
+      ]
+    },
+    "weekly_cassette_route": {
+      "type": "select",
+      "label": "$option_weekly_cassette_route",
+      "description": "$option_weekly_cassette_route_description",
+      "default_case": "default",
+      "cases": [
+        {
+          "name": "default",
+          "label": "$weekly_route_default"
+        },
+        {
+          "name": "only_07",
+          "label": "$weekly_route_only_07",
+          "pipeline_override": {
+            "Weekly_RouteStart": {
+              "next": "Weekly_RunCassette07"
+            },
+            "Weekly_ClickMagicCircle07": {
+              "next": "Weekly_Stop"
+            }
+          }
+        },
+        {
+          "name": "only_08",
+          "label": "$weekly_route_only_08",
+          "pipeline_override": {
+            "Weekly_RouteStart": {
+              "next": "Weekly_RunCassette08"
+            },
+            "Weekly_ClickMagicCircle08": {
+              "next": "Weekly_Stop"
+            }
+          }
+        },
+        {
+          "name": "only_09",
+          "label": "$weekly_route_only_09",
+          "pipeline_override": {
+            "Weekly_RouteStart": {
+              "next": "Weekly_RunCassette09"
+            },
+            "Weekly_ClickMagicCircle09": {
+              "next": "Weekly_Stop"
+            }
+          }
+        },
+        {
+          "name": "only_13",
+          "label": "$weekly_route_only_13",
+          "pipeline_override": {
+            "Weekly_RouteStart": {
+              "next": "Weekly_RunCassette13"
+            },
+            "Weekly_ClickMagicCircle13": {
+              "next": "Weekly_Stop"
+            }
+          }
+        },
+        {
+          "name": "only_16",
+          "label": "$weekly_route_only_16",
+          "pipeline_override": {
+            "Weekly_RouteStart": {
+              "next": "Weekly_RunCassette16"
+            },
+            "Weekly_ClickMagicCircle16": {
+              "next": "Weekly_Stop"
+            }
+          }
+        },
+        {
+          "name": "only_17",
+          "label": "$weekly_route_only_17",
+          "pipeline_override": {
+            "Weekly_RouteStart": {
+              "next": "Weekly_RunCassette17"
+            },
+            "Weekly_ClickMagicCircle17": {
+              "next": "Weekly_Stop"
             }
           }
         }

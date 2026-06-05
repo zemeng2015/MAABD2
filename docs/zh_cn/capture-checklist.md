@@ -20,6 +20,30 @@
 - 奖励确认弹窗。
 - 网络错误或重新连接弹窗。
 
+## 每周吸收/召集截图
+
+请在 `1280x720` 客户区下采集以下模板：
+
+- 主界面右下角游戏卡带入口：`resource/image/weekly/game_cassette_entry.png`
+- 卡带列表上方剧情游戏卡：`resource/image/weekly/story_game_tab.png`
+- 剧情卡带：`resource/image/weekly/cassette_07.png`
+- 剧情卡带：`resource/image/weekly/cassette_08.png`
+- 剧情卡带：`resource/image/weekly/cassette_09.png`
+- 剧情卡带：`resource/image/weekly/cassette_13.png`
+- 剧情卡带：`resource/image/weekly/cassette_16.png`
+- 剧情卡带：`resource/image/weekly/cassette_17.png`
+- 探查图标：`resource/image/weekly/action_explore.png`
+- 吸收图标：`resource/image/weekly/action_absorb.png`
+- 召集图标：`resource/image/weekly/action_rally.png`
+- F/手状交互图标：`resource/image/weekly/hand_interact.png`
+- 地图名称：`resource/image/weekly/map_name_07.png`
+- 地图名称：`resource/image/weekly/map_name_08.png`
+- 地图名称：`resource/image/weekly/map_name_09.png`
+- 地图名称：`resource/image/weekly/map_name_13.png`
+- 地图名称：`resource/image/weekly/map_name_16.png`
+- 地图名称：`resource/image/weekly/map_name_17.png`
+- 地图入口魔法阵图标：`resource/image/weekly/map_magic_circle.png`
+
 ## 模板命名
 
 - `resource/image/home/home_marker.png`
