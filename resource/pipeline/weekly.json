@@ -237,9 +237,9 @@
       "160"
     ],
     "post_delay": 800,
-    "next": "Weekly_PressMapInteract07"
+    "next": "Weekly_PressMapInteractBattle1_07"
   },
-  "Weekly_PressMapInteract07": {
+  "Weekly_PressMapInteractBattle1_07": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -324,10 +324,122 @@
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      420,
-      160,
-      520,
-      360
+      360,
+      120,
+      620,
+      430
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_PressMapInteractBattle2_07"
+  },
+  "Weekly_PressMapInteractBattle2_07": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectBattle2_07"
+  },
+  "Weekly_SelectBattle2_07": {
+    "next": [
+      "Weekly_ClickBattle2_07",
+      "Weekly_SwipeMapListBattle2_07"
+    ]
+  },
+  "Weekly_ClickBattle2_07": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_battle_2.png",
+    "roi": [
+      320,
+      560,
+      640,
+      140
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle2_07"
+  },
+  "Weekly_SwipeMapListBattle2_07": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectBattle2_07"
+  },
+  "Weekly_ClickMagicCircleBattle2_07": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      300,
+      120,
+      760,
+      430
     ],
     "threshold": 0.5,
     "order_by": "Score",
@@ -495,9 +607,9 @@
       "160"
     ],
     "post_delay": 800,
-    "next": "Weekly_PressMapInteract08"
+    "next": "Weekly_PressMapInteractBattle1_08"
   },
-  "Weekly_PressMapInteract08": {
+  "Weekly_PressMapInteractBattle1_08": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -582,10 +694,122 @@
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      420,
-      160,
-      520,
-      360
+      360,
+      120,
+      620,
+      430
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_PressMapInteractBattle2_08"
+  },
+  "Weekly_PressMapInteractBattle2_08": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectBattle2_08"
+  },
+  "Weekly_SelectBattle2_08": {
+    "next": [
+      "Weekly_ClickBattle2_08",
+      "Weekly_SwipeMapListBattle2_08"
+    ]
+  },
+  "Weekly_ClickBattle2_08": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_battle_2.png",
+    "roi": [
+      320,
+      560,
+      640,
+      140
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle2_08"
+  },
+  "Weekly_SwipeMapListBattle2_08": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectBattle2_08"
+  },
+  "Weekly_ClickMagicCircleBattle2_08": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      300,
+      120,
+      760,
+      430
     ],
     "threshold": 0.5,
     "order_by": "Score",
@@ -753,9 +977,9 @@
       "160"
     ],
     "post_delay": 800,
-    "next": "Weekly_PressMapInteract09"
+    "next": "Weekly_PressMapInteractBattle1_09"
   },
-  "Weekly_PressMapInteract09": {
+  "Weekly_PressMapInteractBattle1_09": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -840,10 +1064,122 @@
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      420,
-      160,
-      520,
-      360
+      360,
+      120,
+      620,
+      430
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_PressMapInteractBattle2_09"
+  },
+  "Weekly_PressMapInteractBattle2_09": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectBattle2_09"
+  },
+  "Weekly_SelectBattle2_09": {
+    "next": [
+      "Weekly_ClickBattle2_09",
+      "Weekly_SwipeMapListBattle2_09"
+    ]
+  },
+  "Weekly_ClickBattle2_09": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_battle_2.png",
+    "roi": [
+      320,
+      560,
+      640,
+      140
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle2_09"
+  },
+  "Weekly_SwipeMapListBattle2_09": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectBattle2_09"
+  },
+  "Weekly_ClickMagicCircleBattle2_09": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      300,
+      120,
+      760,
+      430
     ],
     "threshold": 0.5,
     "order_by": "Score",
@@ -1011,9 +1347,9 @@
       "160"
     ],
     "post_delay": 800,
-    "next": "Weekly_PressMapInteract13"
+    "next": "Weekly_PressMapInteractBattle1_13"
   },
-  "Weekly_PressMapInteract13": {
+  "Weekly_PressMapInteractBattle1_13": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1098,10 +1434,122 @@
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      420,
-      160,
-      520,
-      360
+      360,
+      120,
+      620,
+      430
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_PressMapInteractBattle2_13"
+  },
+  "Weekly_PressMapInteractBattle2_13": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectBattle2_13"
+  },
+  "Weekly_SelectBattle2_13": {
+    "next": [
+      "Weekly_ClickBattle2_13",
+      "Weekly_SwipeMapListBattle2_13"
+    ]
+  },
+  "Weekly_ClickBattle2_13": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_battle_2.png",
+    "roi": [
+      320,
+      560,
+      640,
+      140
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle2_13"
+  },
+  "Weekly_SwipeMapListBattle2_13": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectBattle2_13"
+  },
+  "Weekly_ClickMagicCircleBattle2_13": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      300,
+      120,
+      760,
+      430
     ],
     "threshold": 0.5,
     "order_by": "Score",
@@ -1269,9 +1717,9 @@
       "160"
     ],
     "post_delay": 800,
-    "next": "Weekly_PressMapInteract16"
+    "next": "Weekly_PressMapInteractBattle1_16"
   },
-  "Weekly_PressMapInteract16": {
+  "Weekly_PressMapInteractBattle1_16": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1356,10 +1804,122 @@
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      420,
-      160,
-      520,
-      360
+      360,
+      120,
+      620,
+      430
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_PressMapInteractBattle2_16"
+  },
+  "Weekly_PressMapInteractBattle2_16": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectBattle2_16"
+  },
+  "Weekly_SelectBattle2_16": {
+    "next": [
+      "Weekly_ClickBattle2_16",
+      "Weekly_SwipeMapListBattle2_16"
+    ]
+  },
+  "Weekly_ClickBattle2_16": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_battle_2.png",
+    "roi": [
+      320,
+      560,
+      640,
+      140
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle2_16"
+  },
+  "Weekly_SwipeMapListBattle2_16": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectBattle2_16"
+  },
+  "Weekly_ClickMagicCircleBattle2_16": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      300,
+      120,
+      760,
+      430
     ],
     "threshold": 0.5,
     "order_by": "Score",
@@ -1527,9 +2087,9 @@
       "160"
     ],
     "post_delay": 800,
-    "next": "Weekly_PressMapInteract17"
+    "next": "Weekly_PressMapInteractBattle1_17"
   },
-  "Weekly_PressMapInteract17": {
+  "Weekly_PressMapInteractBattle1_17": {
     "action": "Command",
     "exec": "wscript.exe",
     "args": [
@@ -1614,10 +2174,122 @@
     "recognition": "TemplateMatch",
     "template": "weekly/map_magic_circle.png",
     "roi": [
-      420,
-      160,
-      520,
-      360
+      360,
+      120,
+      620,
+      430
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 1800,
+    "next": "Weekly_PressMapInteractBattle2_17"
+  },
+  "Weekly_PressMapInteractBattle2_17": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "key",
+      "-KeyCode",
+      "70",
+      "-HoldMs",
+      "160"
+    ],
+    "post_delay": 1200,
+    "next": "Weekly_SelectBattle2_17"
+  },
+  "Weekly_SelectBattle2_17": {
+    "next": [
+      "Weekly_ClickBattle2_17",
+      "Weekly_SwipeMapListBattle2_17"
+    ]
+  },
+  "Weekly_ClickBattle2_17": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_battle_2.png",
+    "roi": [
+      320,
+      560,
+      640,
+      140
+    ],
+    "threshold": 0.5,
+    "order_by": "Score",
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "click",
+      "-Box",
+      "{BOX}",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-HoldMs",
+      "220"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_ClickMagicCircleBattle2_17"
+  },
+  "Weekly_SwipeMapListBattle2_17": {
+    "action": "Command",
+    "exec": "wscript.exe",
+    "args": [
+      "//B",
+      "//Nologo",
+      "{RESOURCE_DIR}/tools/bd2_input_hidden.vbs",
+      "-Mode",
+      "drag",
+      "-X",
+      "970",
+      "-Y",
+      "360",
+      "-EndX",
+      "330",
+      "-EndY",
+      "360",
+      "-BaseWidth",
+      "1280",
+      "-BaseHeight",
+      "720",
+      "-DurationMs",
+      "650"
+    ],
+    "post_delay": 700,
+    "next": "Weekly_SelectBattle2_17"
+  },
+  "Weekly_ClickMagicCircleBattle2_17": {
+    "recognition": "TemplateMatch",
+    "template": "weekly/map_magic_circle.png",
+    "roi": [
+      300,
+      120,
+      760,
+      430
     ],
     "threshold": 0.5,
     "order_by": "Score",
